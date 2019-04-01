@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+	<listener>
+		<listener-class>com.besto.sdms.interfaces.ServletInit</listener-class>
+	</listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext-*.xml</param-value>
+  </context-param>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-name>AxisServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+  </servlet>
+	<servlet>
+		<servlet-name>Content_GetListByCategoryid</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Content_GetListByCategoryid</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Channel_GetListByUMSGroupID</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Channel_GetListByUMSGroupID</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Category_GetListByCategoryid</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Category_GetListByCategoryid</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Detail_GetListByCategoryid</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Detail_GetListByCategoryid</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Content_GetDetailByids</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Content_GetDetailByids</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Advertisement_CreateJsData</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Advertisement_CreateJsData</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Topic_CreateJsData</servlet-name>
+		<servlet-class>com.besto.sdms.interfaces.Topic_CreateJsData</servlet-class>
+	</servlet>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/servlet/AxisServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Content_GetListByCategoryid</servlet-name>
+		<url-pattern>/Content_GetListByCategoryid</url-pattern>
+	</servlet-mapping>
+  <servlet>
+    <display-name>Axis Admin Servlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
+    <load-on-startup>100</load-on-startup>
+  </servlet>
+	<servlet-mapping>
+		<servlet-name>Channel_GetListByUMSGroupID</servlet-name>
+		<url-pattern>/Channel_GetListByUMSGroupID</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Category_GetListByCategoryid</servlet-name>
+		<url-pattern>/Category_GetListByCategoryid</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Detail_GetListByCategoryid</servlet-name>
+		<url-pattern>/Detail_GetListByCategoryid</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Content_GetDetailByids</servlet-name>
+		<url-pattern>/Content_GetDetailByids</url-pattern>
+	</servlet-mapping>	
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/servlet/AdminServlet</url-pattern>
+  </servlet-mapping>
+  
+   	<servlet>
+  		<servlet-name>TestServlet</servlet-name>
+  		<servlet-class>com.besto.epgms.servlet.pages.TestServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>TestServlet</servlet-name>
+  		<url-pattern>/updatePages/servlet/upload</url-pattern>
+  	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Advertisement_CreateJsData</servlet-name>
+		<url-pattern>/Advertisement_CreateJsData</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Topic_CreateJsData</servlet-name>
+		<url-pattern>/Topic_CreateJsData</url-pattern>
+	</servlet-mapping>
+  	
+  	<servlet>
+  		<servlet-name>UploadController</servlet-name>
+  		<servlet-class>com.besto.epgms.servlet.pages.UploadController</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>UploadController</servlet-name>
+  		<url-pattern>/updatePages/servlet/UploadController</url-pattern>
+  	</servlet-mapping>
+</web-app>
