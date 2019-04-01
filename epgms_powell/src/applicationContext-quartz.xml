@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="false">
+  	<!-- 等待同步任务 -->
+	<bean id="heartBeatJob" class="com.besto.job.HeartBeatJob"/>
+	
+    <!-- 设置执行任务中的方法 -->
+	<!-- 心跳任务的方法 -->
+	<bean id="heartBeatMethod"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="heartBeatJob"></property>
+		<property name="targetMethod" value="call"></property>
+		<!-- 是否并行运行 -->
+		<property name="concurrent" value="false"></property>
+	</bean>
+	
+	<!-- 心跳 触发器：定义触发规则 -->
+	<bean id="hbJob"
+		class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref local="heartBeatMethod" />
+		</property>
+		<property name="startDelay">
+		<!-- 服务启动3秒后执行  3*1000--> 
+		<value>15000</value>
+		</property> 
+		<property name="repeatInterval">
+			<!-- 每隔5分钟执行一次 5*60*1000 --> 
+			<value>300000</value>
+		</property>
+	</bean>
+	
+	<!-- 容器：将触发器注册进来 -->
+	<bean id="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<!-- 注册触发器(Trigger) -->
+			<list>
+				<ref bean="hbJob"/>
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<!-- 随机存储，非持久化 -->
+				<prop key="org.quartz.jobStore.class">
+					org.quartz.simpl.RAMJobStore
+				</prop>
+				<!-- 线程池 -->
+				<prop key="org.quartz.threadPool.class">
+					org.quartz.simpl.SimpleThreadPool
+				</prop>
+				<prop key="org.quartz.threadPool.threadCount">10</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+</beans>
