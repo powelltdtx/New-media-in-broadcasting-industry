@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GuardlForCxfServiceImpService WSDL service -->
+
+  <service name="GuardlForCxfServiceImp" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://websinterface.epgms.besto.com"/>
+      <parameter name="wsdlServiceElement" value="GuardlForCxfServiceImpService"/>
+      <parameter name="schemaQualified" value="http://websinterface.epgms.besto.com"/>
+      <parameter name="wsdlServicePort" value="GuardlForCxfServiceImp"/>
+      <parameter name="className" value="com.besto.epgms.websinterface.GuardlForCxfServiceImpSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="GuardlForCxfServiceImp"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="testMethod" qname="operNS:testMethod" xmlns:operNS="http://websinterface.epgms.besto.com" returnQName="retNS:testMethodReturn" xmlns:retNS="http://websinterface.epgms.besto.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:s" xmlns:pns="http://websinterface.epgms.besto.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="tamperNoticeByJson" qname="operNS:tamperNoticeByJson" xmlns:operNS="http://websinterface.epgms.besto.com" returnQName="retNS:tamperNoticeByJsonReturn" xmlns:retNS="http://websinterface.epgms.besto.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:jsonArray" xmlns:pns="http://websinterface.epgms.besto.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="tamperNoticeByJson testMethod"/>
+
+  </service>
+</deployment>
