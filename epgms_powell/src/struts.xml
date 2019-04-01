@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="9999999999"/> 
+	<!-- 全局包设置 -->
+	<package name="defalutGlobal" extends="json-default">
+		
+		<interceptors>
+			<interceptor name="authority"
+				class="com.besto.interceptor.LoginInterceptor">
+			</interceptor>
+			<interceptor name="localLog"
+				class="com.besto.interceptor.localLogInterceptor">
+			</interceptor>
+			<interceptor name="keepValue"
+				class="com.besto.interceptor.KeepValueInterceptor">
+			</interceptor>
+			<interceptor name="ajaxFileUploadInterceptor" class="com.besto.interceptor.AjaxFileUploadInterceptor">
+			</interceptor>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" >
+				 <param name="includeMethods"></param>  
+                 <param name="excludeMethods">  
+                        login,init,logout 
+                  </param>  
+				</interceptor-ref>
+				<interceptor-ref name="localLog" />
+				<interceptor-ref name="keepValue" />
+				
+			</interceptor-stack>
+		</interceptors>
+		
+		<global-results>
+			<result name="noright">WEB-INF/pages/login.jsp</result>
+			<result name="exception">WEB-INF/pages/except.jsp</result>
+			<result name="showError">WEB-INF/pages/error.jsp</result>
+			<result name="update">/updateUsertoken.jsp</result>
+			<result name="sessionout">sessionout.jsp</result>
+		</global-results>
+	</package>
+	<!-- 自定义开发包 -->
+	<package name="myDefault" namespace="/" extends="defalutGlobal">
+	
+		<default-interceptor-ref name="mydefault" />
+		
+		<!-- 测试Action -->
+		
+		<action name="down_*" class="downTestAction" method="{1}"></action>
+		
+		
+		<!-- 登录Action -->
+		<action name="login_*" class="loginAction" method="{1}">
+<!-- 		<result name="main" type="redirect">portal!toMain.action</result> -->
+			<result name="main" type="redirect">index.jsp</result>
+			<result name="input">WEB-INF/pages/login.jsp</result>
+			
+			
+		</action>
+		<!--主页Action -->
+		<action name="portal" class="portal">
+			<!-- <result name="success">/WEB-INF/pages/main.jsp</result> -->
+			<result name="success">/newpages/newTemplate.jsp</result>
+			
+		</action>
+		<!--用户信息Action -->
+		<action name="user_*" class="userInfoAction" method="{1}">
+			<!-- <result name="add">WEB-INF/pages/user/user_add.jsp</result> -->
+			<result name="add">WEB-INF/newpages2/user_add.jsp</result>
+			<!-- <result name="edit">WEB-INF/pages/user/user_edit.jsp</result> -->
+			<result name="edit">WEB-INF/newpages2/user_edit.jsp</result>
+			<!-- <result name="success">WEB-INF/pages/user/user_list.jsp</result> -->
+			<result name="success">WEB-INF/newpages2/user_list.jsp</result>
+			<result name="ok" type="redirect">user_search.do?doFlag=${doFlag}</result>
+		</action>
+		 <!-- 角色管理 -->
+		  <action name="role_*" class="roleAction" method="{1}">
+		     <result name="index">WEB-INF/newpages2/role_list.jsp</result>
+		     <result name="toadd">WEB-INF/newpages2/role_add.jsp</result>
+		     <result name="ok" type="redirect">role!searchAllRoles.action?doFlag=1</result>
+		     <result name="no" type="redirect">role!searchAllRoles.action?doFlag=0</result>
+		     <result name="toedit">WEB-INF/newpages2/role_edit.jsp</result>
+		 </action> 
+
+
+		  <!-- 日志管理action -->
+	    <action name="operationLog_*" class="operationLog" method="{1}">
+	    	<result name="index">WEB-INF/newpages2/log_list.jsp</result>
+	    </action>
+	    
+         <!-- 上传图片根据时间戳生成图片 -->
+		<action name="uploadNameByTime" class="fileUploadNameByTimeAction" method="fileUploadNameByTime">
+            <interceptor-ref name="ajaxFileUploadInterceptor">
+		           	<param name="maxSize">8388608000</param>  <!--可选，数字类型，需要小于struts.multipart.maxSize配置的值 -->
+		           	<param name="fileType">image/png,image/gif,image/jpeg,image/x-icon</param> <!--可选，逗号分割 -->
+			   		<param name="errorCode">1111111</param>  <!--可选，数字类型 -->
+		     </interceptor-ref>
+            
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+        <action name="upload" class="fileUploadAction" method="fileUpload">
+        	<interceptor-ref name="ajaxFileUploadInterceptor">
+		           	<param name="maxSize">8388608000</param>  <!--可选，数字类型，需要小于struts.multipart.maxSize配置的值 -->
+		     </interceptor-ref>
+            
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+        
+        <!-- 上线历史action -->
+	    <action name="templetHistory_*" class="templetHistoryAction" method="{1}">
+	    	<result name="success">/WEB-INF/pages/templetHistory/list.jsp</result>
+			<result name="check">WEB-INF/pages/templetHistory/see.jsp</result>
+	    </action>
+	    
+	    <!--模板管理action -->
+	    <action name="templet_*" class="templetAction" method="{1}">
+       <!-- <result name="success">WEB-INF/pages/templet/templet_list.jsp</result> -->
+	    	<result name="success">WEB-INF/newpages2/createTemplate.jsp</result>
+	    	<result name="release">WEB-INF/newpages2/template.jsp</result>
+	    	<result name="examine">WEB-INF/newpages2/tempExamine.jsp</result>
+	    	<result name="synalize">WEB-INF/newpages2/synalize.jsp</result>
+	    	
+	    	<result name="detail">WEB-INF/pages/templet/templet_detail.jsp</result>
+	    	<result name="edit">WEB-INF/pages/templet/templet_edit.jsp</result>
+	    <!--<result name="submitOk" type="redirect">templet_search.do?doFlag=1</result> -->
+	    	<result name="submitOk" type="redirect">templet_searchByExamine.do?doFlag=1</result>
+	    	
+	    	<result name="againSubmitOk" type="redirect">templet_searchByRelease.do?doFlag=1</result>
+	    	<result name="againReleaseFal" type="redirect">templet_searchByRelease.do?doFlag=1</result>
+	    	
+			<result name="releaseFal" type="redirect">templet_searchByExamine.do?doFlag=4</result>
+			<result name="checkFal" type="redirect">templet_search.do?doFlag=2</result>
+			<result name="noGroupFal" type="redirect">templet_search.do?doFlag=3</result>
+			<result name="preSubmitOk" type="redirect">templet_search.do?doFlag=5</result>
+			<result name="preSubmitFal" type="redirect">templet_search.do?doFlag=6</result>
+			<result name="updateOk" type="redirect">templet_search.do?doFlag=7</result>
+			<result name="updateFal" type="redirect">templet_search.do?doFlag=8</result>
+			<result name="addOk" type="redirect">templet_search.do?doFlag=9</result>
+			<result name="addFal" type="redirect">templet_search.do?doFlag=10</result>
+			<result name="add">WEB-INF/newpages2/newTemplate.jsp</result>
+			<!-- <result name="showMont">WEB-INF/newpages2/showMont.jsp</result> -->
+			<result name="showMont">WEB-INF/newpages2/warningMonitor.jsp</result>
+			<result name="searchArea" >WEB-INF/newpages2/areaManage.jsp</result>
+			<!-- 分域添加页 -->
+			<result name="addArea">WEB-INF/newpages2/addArea.jsp</result>
+			<result name="saveAreaOk" type="redirect">templet_searchArea.do</result>
+			<!-- <result name="bidingOK" type="redirect">templet_search.do</result> -->
+	    </action>
+	    
+	    <!-- 模板库 -->
+	  <action name="templetPool_*" class="templetPoolAction" method="{1}">
+	  	<result name="searchTemplate" type="redirect">templet_search.do</result>
+	  	<result name="searchPoolPage" >WEB-INF/newpages2/templatePool.jsp</result>
+	  </action>
+	  
+	    <!-- 文件篡改 -->
+	  <action name="fileGuard_*" class="fileGuardAction" method="{1}">
+	  	<result name="success">WEB-INF/newpages2/fileMan.jsp</result>
+	  </action>
+	  <!-- 文件管理 -->
+	  <action name="fileManage_*" class="fileManageAction" method="{1}">
+	  	<result name="index">WEB-INF/newpages2/file_list.jsp</result>
+	  	<result name="action" type="redirect">fileManage_search.do</result>
+	  </action>	  
+	  <!-- 文件管理 -->
+	  <action name="serversManage_*" class="serversManageAction" method="{1}">
+	  	<result name="index">WEB-INF/newpages2/server_list.jsp</result>
+	  	<result name="add">WEB-INF/newpages2/server_add.jsp</result>
+	  	<result name="edit">WEB-INF/newpages2/server_edit.jsp</result>
+	  	<result name="save" type="redirect">serversManage_search.do</result>
+	  	<result name="update" type="redirect">serversManage_search.do</result>
+	  	<result name="cancel" type="redirect">serversManage_search.do</result>
+	  	<result name="delete" type="redirect">serversManage_search.do</result>
+	  </action>
+	    <!-- 服务器心跳监控 -->
+	  <action name="heartBeat_*" class="heartBeatAction" method="{1}">
+	  	<result name="success">WEB-INF/newpages2/serverMonitor.jsp</result>
+	  	<result name="updateOK" type="redirect">heartBeat_search.do</result>
+	  </action>
+	  
+		<!-- 广告内容管理  -->
+		<action name="adresourceEpgmsAction_*" class="adresourceEpgmsAction" method="{1}">
+		    <result name="resultsuccess">adresourceJsp/categorylist.jsp</result>
+		    <result name="programresult">adresourceJsp/vodlist.jsp</result>
+		    <result name="scheduleresult">adresourceJsp/schedulelist.jsp</result>
+		    <result name="selectVideo_success">adresourceJsp/selectVideo.jsp</result>
+		    <result name="closeEdit">adresourceJsp/closeEdit.jsp</result>
+		    <result name="updateAdSuccess">adresourceJsp/edit.jsp</result>
+		    
+		    <result name="programlist">adresourceJsp/vodlist.jsp</result>
+		    <result name="categorylist">adresourceJsp/categorylist.jsp</result>
+		    <result name="goEdit">adresourceJsp/edit.jsp</result>
+		    
+		</action>
+	</package>
+	
+</struts>
+
+
