@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+<tlibversion>1.0</tlibversion>
+<jspversion>1.0</jspversion>
+<shortname>epgmstags</shortname>
+<uri>epgmstags</uri>
+<tag>
+   <name>roleTag</name>
+   <tagclass>com.besto.epgms.action.UserRolePermissionTags</tagclass>
+   <attribute>
+       <name>btncode</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+<tag>
+   <name>roleNamesTag</name>
+   <tagclass>com.besto.epgms.action.UserRolesTags</tagclass>
+   <attribute>
+       <name>user_id</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+</taglib>
