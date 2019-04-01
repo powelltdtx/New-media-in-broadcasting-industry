@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://websinterface.epgms.besto.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://websinterface.epgms.besto.com" xmlns:intf="http://websinterface.epgms.besto.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://websinterface.epgms.besto.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="testMethod">
+    <complexType>
+     <sequence>
+      <element name="s" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testMethodResponse">
+    <complexType>
+     <sequence>
+      <element name="testMethodReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="tamperNoticeByJson">
+    <complexType>
+     <sequence>
+      <element name="jsonArray" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="tamperNoticeByJsonResponse">
+    <complexType>
+     <sequence>
+      <element name="tamperNoticeByJsonReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="tamperNoticeByJsonResponse">
+
+      <wsdl:part element="impl:tamperNoticeByJsonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testMethodRequest">
+
+      <wsdl:part element="impl:testMethod" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testMethodResponse">
+
+      <wsdl:part element="impl:testMethodResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="tamperNoticeByJsonRequest">
+
+      <wsdl:part element="impl:tamperNoticeByJson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GuardlForCxfServiceImp">
+
+      <wsdl:operation name="testMethod">
+
+         <wsdl:input message="impl:testMethodRequest" name="testMethodRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testMethodResponse" name="testMethodResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tamperNoticeByJson">
+
+         <wsdl:input message="impl:tamperNoticeByJsonRequest" name="tamperNoticeByJsonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:tamperNoticeByJsonResponse" name="tamperNoticeByJsonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GuardlForCxfServiceImpSoapBinding" type="impl:GuardlForCxfServiceImp">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="testMethod">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testMethodRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testMethodResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tamperNoticeByJson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tamperNoticeByJsonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tamperNoticeByJsonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GuardlForCxfServiceImpService">
+
+      <wsdl:port binding="impl:GuardlForCxfServiceImpSoapBinding" name="GuardlForCxfServiceImp">
+
+         <wsdlsoap:address location="http://localhost:8083/epgms/services/GuardlForCxfServiceImp"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
