@@ -1,0 +1,3 @@
+common.properties  发布时需要修改里面的各项目url的ip地址
+mysql-databaseConfig.properties  如果是c3p0方式连接数据库，则修改此文件的数据库连接配置
+ftp.properties     上传服务器的ftp配置信息
