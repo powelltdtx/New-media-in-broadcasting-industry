@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="defalutGlobal" location="0,0" size="0,0" />
+  <package name="myDefault" location="0,0" size="0,0">
+    <action name="down_*" location="0,0" size="0,0" />
+    <action name="login_*" location="0,0" size="0,0">
+      <result name="main" />
+      <result name="input" />
+    </action>
+    <action name="portal" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="user_*" location="0,0" size="0,0">
+      <result name="add" />
+      <result name="edit" />
+      <result name="success" />
+      <result name="ok" />
+    </action>
+    <action name="role_*" location="0,0" size="0,0">
+      <result name="index" />
+      <result name="toadd" />
+      <result name="ok" />
+      <result name="no" />
+      <result name="toedit" />
+    </action>
+    <action name="operationLog_*" location="0,0" size="0,0">
+      <result name="index" />
+    </action>
+    <action name="uploadNameByTime" location="0,0" size="0,0" />
+    <action name="upload" location="0,0" size="0,0" />
+    <action name="templetHistory_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="check" />
+    </action>
+    <action name="templet_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="detail" />
+      <result name="edit" />
+      <result name="submitOk" />
+      <result name="checkFal" />
+      <result name="noGroupFal" />
+      <result name="releaseFal" />
+      <result name="preSubmitOk" />
+      <result name="preSubmitFal" />
+      <result name="updateOk" />
+      <result name="updateFal" />
+      <result name="addOk" />
+      <result name="addFal" />
+      <result name="add" />
+    </action>
+    <action name="fileGuard_*" location="0,0" size="0,0" />
+  </package>
+  <webResource name="add.jsp" path="WEB-INF/pages/user/add.jsp" location="0,0" size="0,0" />
+  <webResource name="edit.jsp" path="WEB-INF/pages/user/edit.jsp" location="0,0" size="0,0" />
+  <webResource name="list.jsp" path="WEB-INF/pages/user/list.jsp" location="0,0" size="0,0" />
+  <webResource name="index.jsp" path="/index.jsp" location="0,0" size="0,0" />
+  <webResource name="schedulelist.jsp" path="/WEB-INF/pages/schedule/schedulelist.jsp" location="0,0" size="0,0" />
+  <webResource name="schedulelistresult.jsp" path="/WEB-INF/pages/schedule/schedulelistresult.jsp" location="0,0" size="0,0" />
+  <webResource name="main.jsp" path="/WEB-INF/pages/main.jsp" location="0,0" size="0,0" />
+  <webResource name="editschedule.jsp" path="/WEB-INF/pages/schedule/editschedule.jsp" location="0,0" size="0,0" />
+  <webResource name="index.jsp" path="WEB-INF/pages/channel/index.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+
