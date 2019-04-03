@@ -1,0 +1,22 @@
+table.movies {
+    background-color: #CDCDCD;
+    font-family: arial;
+    margin: 10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+
+table.movies thead tr th {
+    background-color: #E6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 10px;
+}
+
+table.movies tbody tr td {
+    background-color: #FFF;
+    color: #3D3D3D;
+    vertical-align: top;
+    padding: 10px;
+}
