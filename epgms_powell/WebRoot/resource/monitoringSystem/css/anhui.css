@@ -1,0 +1,236 @@
+/*监控系统*/
+.box{
+	width: 1920px;
+	height: 1080px;
+	/*width: 1280px;
+	height: 720px;*/
+	background: url(../img/anhui.jpg) no-repeat;
+}
+/*实时监控信息*/
+.timeInform{
+	position: absolute;
+	top: 152px;
+	left: 74px;
+	width: 442px;
+	height: 340px;
+	background: url(../img/ah_kuang1.png) no-repeat;
+}
+.title1,.title2,.title3,.title4,.title5{
+	color: #FFFFFF;
+	font-size: 24px;
+}
+.title1{
+	position: absolute;
+	top: 8px;
+	left: 150px;
+}
+.numList{
+	color: #FFFFFF;
+	font-size: 24px;
+	position: absolute;
+	top: 60px;
+	left: 32px;
+}
+.numList .num1,.num2,.num3{
+	margin-top: 15px;
+	padding-left: 85px;
+	width: 373px;
+	height: 66px;
+	line-height: 35px;
+}
+.numList .num1{
+	background: url(../img/ah_icon_1.png) no-repeat;
+}
+.numList .num1 span,.num2 span,.num3 span{
+	font-size: 40px;
+}
+.numList .num1 span{
+	margin-left: 15px;
+	color: #ff9c00;
+}
+.numList .num2 span{
+	margin-left: 15px;
+	color: #00c3d5;
+}
+.numList .num3 span{
+	margin-left: 15px;
+	color: #f65050;
+}
+.numList .num2{
+	background: url(../img/ah_icon_2.png) no-repeat;
+}
+.numList .num3{
+	background: url(../img/ah_icon_3.png) no-repeat;
+}
+/*日期时间*/
+.dateTime{
+	position: absolute;
+	top: 170px;
+	left: 560px;
+}
+.dateTime .date,.time{
+	margin-top: 20px;
+	font-size: 24px;
+	color:#4bdff4;
+}
+/*服务器位置*/
+.serverLocation{
+	width: 754px;
+	height: 136px;
+	position: absolute;
+	top: 550px;
+	left: 550px;
+}
+.serverLocation ul li{
+	margin-left: 36px;
+	width: 38px;
+	height: 56px;
+	display: inline-block;
+}
+/*告警趋势*/
+.alarmTrend{
+	position: absolute;
+	top: 517px;
+	left: 74px;
+	width: 444px;
+	height: 274px;
+	background: url(../img/ah_kuang2.png) no-repeat;
+}
+.title2{
+	position: absolute;
+	top: 6px;
+	left: 174px;
+}
+.alarmTrendPic{
+	position: absolute;
+	top: 80px;
+	left: 30px;
+	width: 370px;
+	height: 180px;
+}
+/*告警日志*/
+.alarmLog{
+	position: absolute;
+	top: 787px;
+	left: 74px;
+	width: 1290px;
+	height: 276px;
+	background: url(../img/ah_kuang3.png) no-repeat;
+}
+.title3{
+	position: absolute;
+	top: 7px;
+	left: 1057px;
+}
+.details{
+	position: absolute;
+	top: 45px;
+	left: 30px;
+}
+ul{
+	display: inline-block;
+}
+.li{
+	margin-top: 17px;
+	text-align: center;
+	font-size: 24px;
+	color: #FFFFFF;
+	width: 180px;
+	height: 35px;
+	line-height: 35px;
+}
+.litime{
+	margin-top: 17px;
+	text-align: center;
+	font-size: 24px;
+	color: #FFFFFF;
+	width: 190px;
+	height: 35px;
+	line-height: 35px;
+}
+.tit{
+	width:242px;
+	height:44px;
+	color: #00c3d5;
+	margin-left: 40px;
+	background-color: #006188;
+}
+/*服务器状态*/
+.serverStatus{
+	position: absolute;
+	top: -650px;
+	left: 1330px;
+	width: 444px;
+	height: 426px;
+	background: url(../img/ah_kuang4.png) no-repeat;
+}
+.statusList{
+	position: absolute;
+	top: 35px;
+	width: 430px;
+	height: 310px;
+}
+.title4{
+	position: absolute;
+	top: 8px;
+	left: 164px;
+}
+.serverStatus ul{
+	margin-left:3px;
+	display: inline-block;
+}
+.serverStatus ul li{
+	padding-left: 55px;
+	border: 2px solid #3ca678;
+	margin-top:30px;
+	position: relative;
+	width: 140px;
+	height: 86px;
+	margin-left:10px;
+	background: url(../img/ah_icon_green.png) no-repeat 10px;
+}
+.serverStatus ul li img{
+	position: absolute;
+	top: 43px;
+	left: 143px;
+}
+
+.serverStatus ul li span{
+	font-size: 24px;
+	color: #3ca678;
+	display: block;
+}
+.serverStatus ul li .serNum{
+	font-size: 22px;
+	margin-top: 10px;
+}
+/*告警事件*/
+.alarmEvent{
+	background: url(../img/ah_kuang5.png) no-repeat;
+	position: absolute;
+	top: -170px;
+	left: 1330px;
+	width: 440px;
+	height: 444px;
+}
+.title5{
+	position: absolute;
+	top: 7px;
+	left: 187px;
+}
+.alarmEventPic{
+	position: absolute;
+	top: -40px;
+	left: 0px;
+	width: 400px;
+	height: 450px;
+	/*display: none;*/
+}
+/*告警事件默认图片*/
+.defaultImage{
+	display: none;
+	position: absolute;
+	top: 100px;
+	left: 70px;
+	
+}
