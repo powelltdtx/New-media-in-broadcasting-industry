@@ -1,0 +1,203 @@
+.form-head {
+	height: 80px;
+	line-height: 80px;
+	border-bottom: 1px solid #FF7A19;
+}
+
+.block {
+	border-bottom: 1px solid #FF7A19;
+}
+.add_table {
+	margin-left: 20px;
+}
+.upload {
+	height: 40px;
+	line-height: 40px;
+}
+
+#filenameSel {
+	margin-top: 50px;
+}
+
+#choseBtn {
+	position: absolute;
+	left: 694px;
+	top: 273px;
+}
+#apksrc {
+	position: absolute;
+	left: 694px;
+	top: 273px;
+}
+#subBtn {
+	position: absolute;
+	left: 445px;
+	top: 555px;
+}
+
+#subBtn input,#selectId  {
+	color: #FFFFFF;
+	background: #FF7A19;
+}
+
+.crumb{
+	padding-left: 300px;
+}
+.crumb a {
+	font-size:17px;
+	color: #FF7A19;
+}
+.block{
+	padding-left: 300px;
+	padding-bottom: 20px;
+}
+.mask {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.5;
+	display: none;
+}
+
+.form-add {
+	width: 600px;
+	height: 300px;
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	margin-left: -197px;
+	padding-bottom: 20px;
+	background: #fff;
+	display: none;
+}
+
+.form-add-title {
+	background-color: #f7f7f7;
+	border-width: 1px 1px 0 1px;
+	border-bottom: 0;
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.form-add-title span {
+	width: auto;
+	height: 48px;
+	font-size: 16px;
+	font-family: 宋体;
+	font-weight: bold;
+	color: #FF7A19;
+	text-indent: 12px;
+	padding: 8px 0px 10px;
+	margin-right: 10px;
+	display: block;
+	overflow: hidden;
+	text-align: left;
+	text-align: center;
+}
+
+.form-add-title div {
+	width: 16px;
+	height: 20px;
+	position: absolute;
+	right: 10px;
+	top: 6px;
+	font-size: 30px;
+	line-height: 16px;
+	cursor: pointer;
+}
+
+.form-submit {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.form-submit input {
+	background-color: #FF7A19;
+	border: none;
+	border-radius: 5px;
+	margin: 0 20px;
+	width: 85px;	
+	height: 32px;
+}
+#preTbody{	
+	border: 1px solid #CCCCCC;
+}
+.main2{
+	text-align: center;
+}
+.main2 tr{
+	border-bottom:1px solid #FF7A19;
+}
+.main2 tr:nth-child(0){
+	border-top:1px solid #FF7A19;
+}
+.main2 tr:nth-child(7){
+	border-bottom:1px solid #FF7A19;
+}
+.main2 tr td{
+	font-size: 16px;
+}
+.form-body{
+	width: 170px;
+}
+.choseTemp {
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 690px;
+    top: 270px;
+    background: #ff7a19;
+    text-align: center;
+    border-radius: 5px;
+     z-index:-1;
+}
+.choseTemp p{
+	color: #FFFFFF;
+}
+.newtp{
+	width: 90px;
+	height: 25px;
+	position: absolute;
+    overflow: hidden;
+    left: 4px;
+    top: -25px;
+    opacity: 0;
+    z-index:1000;
+}
+.maskTemp{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 106%;
+	background: #000;
+	opacity: 0.5;
+	display: none;
+}
+.cancelFreeze{
+	width: 600px;
+	height: 300px;
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	margin-left: -197px;
+	padding-bottom: 20px;
+	background: #fff;
+	display: none;
+}
+.cancelFreeze .layer-msg,.confrimBtn{
+	margin: 80px auto;
+	text-align: center;
+	font-size: 24px;
+	color: #FF7A19;
+}
+.cancelFreeze .confrimBtn .btn{
+	color: #FFFFFF;
+	background: #FF7A19;
+	margin-top: 30px;
+	margin-right:20px;
+}
