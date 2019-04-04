@@ -1,0 +1,162 @@
+@charset "UTF-8";
+*{
+    margin:0;
+    padding:0;
+}
+html,body{
+    /*width:100%;*/
+    /*height:100%;*/
+    width: 1280px;
+    height: 720px;
+    overflow-y: hidden;
+}
+/*main*/
+.main{
+    width: 66%;
+    height: 66%;
+    border: 1px solid #999;
+    background: #ccc;
+    float: left;
+}
+.main img{
+    position: absolute;
+}
+/*showPart*/
+.operateShow{
+    width:16%;
+    height: 92%;
+    overflow-y: auto;
+    float: left;
+    border:1px solid #2e6da4;
+    margin:.5%;
+}
+.operateShow input[type='file']{
+    width:100%;
+}
+.imgList{
+    margin-top: 5px;
+}
+.newImg img{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border: 1px solid #333;
+}
+.newImg .textZone{
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    margin: 5px;
+    /*border: 1px solid #333;*/
+}
+.newImg{
+    text-align: center;
+    margin: 4px;
+    border: 2px dotted transparent;
+}
+.sel{
+    border: 1px dotted orange!important
+}
+.cur{
+    border: 2px dotted orange!important;
+}
+.newImg span{
+    width: 60px;
+    display: inline-block;
+    line-height: 65px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.newText{
+    border: 1px solid #333;
+    position: absolute;
+}
+.newText a{
+    width:100%;
+    height:100%;
+    /*opacity:0;*/
+    display:  block;
+}
+.delBtn{
+    margin: 5px;
+}
+.textList .delBtn{
+    /*margin: 37px 0;*/
+}
+/*editPart*/
+.editPart{
+    width:16%;
+    height: 92%;
+    overflow-y: auto;
+    float: left;
+    border:1px solid gray;
+    margin:.5%;
+}
+.edit{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.editPart label{
+    margin-left: 5px;
+}
+.editPart form > input{
+    width: 140px;
+    height: 25px;
+    margin:10px 0;
+}
+.formBtn{
+    text-align: center;
+}
+/*.formBtn input{*/
+    /*width: 96px;*/
+/*}*/
+.e_fontSize,.l_fontSize{
+    visibility: hidden;
+}
+.resetBtn,.refresh,.saveBtn{
+    margin-top: 5px;
+    width:80%;
+}
+.grape,.flat{
+    display: none;
+}
+.flat{
+    /* display: none!important; */
+}
+.see{
+    display: inline-block;
+}
+.e_grape{
+	border: 1px solid gray!important;
+	background:transparent!important;
+}
+
+/*自定义滚动条*/
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.operateShow::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+    /*background-color: #808080;*/
+    /*background-color: #eeeeee;*/
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.operateShow::-webkit-scrollbar-track{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    border-radius: 10px;
+    /*background-color: #c0c0c0;*/
+    background-color: #ddd;
+}
+/*定义滑块，内阴影及圆角*/
+.operateShow::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    /*background-color: #808080;*/
+    background-color: rgba(0,0,0,.2);
+}
+
