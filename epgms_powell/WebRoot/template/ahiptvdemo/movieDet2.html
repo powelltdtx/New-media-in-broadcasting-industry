@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="Page-View-Size" content="1280*720">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>epg</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/details2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor=transparent style="width: 1280px; height: 720px;">
+	<!-- <div id="tempid" style="color:red;">moiveDet2.jsp01</div> -->
+	<div id="container">
+		<!--小框框-->
+		<div id="border"></div>
+		<div id="details">
+			<div class="bg">
+				<img src="img/detail/movie_detail_bg.png" width="1280">
+			</div>
+			<div class="media"></div>
+			<div class="title" id="title"></div>
+			<div class="ifro" id="year">年份：</div>
+			<div class="editor" id="editor">
+				导演：<span class="edi funs"></span>
+			</div>
+			<div class="role" id="role">
+				主演：<span class="rol funs"></span><span class="rol funs"></span><span
+					class="rol funs"></span><span class="rol funs"></span><span
+					class="rol funs"></span>
+			</div>
+			<div class="jj_detail">
+				<span id="description"></span><span class="readMore">【全文】</span>
+			</div>
+
+			<!--功能区域-->
+			<div id="fun">
+				<div class="fun has" id="playbt" style="display: none">
+					<img src="img/detail/play_btn.png" id="playimg">
+					<div class="record" id="showRecorddiv">
+						<span>您上次观看到</span>
+					</div>
+				</div>
+				<div class="fun" id="buybt" style="display: none;">
+					<img src="img/detail/buy_btn.png">
+				</div>
+				<div class="fun has" id="collbutton" style="display: none">
+					<img src="img/detail/coll_btn.png" id="collbt">
+				</div>
+				<!-- <div class="fun has"><img src="images/share_btn.png"></div>-->
+			</div>
+		</div>
+
+		<!--相关推荐开始-->
+		<div id="recommod">
+			<div class="title">相关推荐</div>
+			<ul>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+				<li class="recommod img"><img src="" width="166" height="222"><i
+					class="light"></i>
+				<p></p></li>
+			</ul>
+		</div>
+		<!--相关推荐结束-->
+	</div>
+	<!--简介全部-->
+	<div id="morepop" style="display: none;">
+		<div class="mask"></div>
+		<div id="borderpop"></div>
+		<div id="moredeta">
+		</div>
+		<div id="titlemore">简介</div>
+	</div>
+	<!--简介全部-->
+ 	<iframe id="collectionFrame" name="collectionFrame" frameborder="0" height="0" width="0"></iframe>
+ 	<iframe id="recordFrame" name="recordFrame" frameborder="0" height="0" width="0"></iframe>
+	<script src="js/common.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/details2.js"></script>
+	<script src="js/keyPress.js"></script>
+	<script src="js/master.js"></script>
+	<script src="js/back.js"></script>
+	<iframe id="JQFrame" name="JQFrame" frameborder="0" height="0" width="0"></iframe>
+	<iframe id="videoPlay" name="videoPlay" src="vodplay.html" width="0px" height="0px" style="position: absolute; left:0px;top:0px;"></iframe>
+</body>
+</html>
