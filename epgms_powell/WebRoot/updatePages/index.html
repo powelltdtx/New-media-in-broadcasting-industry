@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="<%=basePath%>"> 
+    <meta charset="UTF-8">
+    <title>图形化开发工具</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+<body>
+    <!--<div class="box">-->
+        <div class="main"></div>
+    <!--</div>-->
+    <div class="operateShow">
+        <input id="upload" class="upload" type="file" onchange="getImgUrl(this)" enctype="multipart/form-data" />
+        <div class="imgList"></div>
+        <div class="textList"></div>
+    </div>
+    <div class="editPart">
+        <form action="">
+            <p class="edit">编辑</p>
+            <label for="">宽度：</label><input class="e_width" type="number" min="0">
+            <label for="">高度：</label><input class="e_height" type="number" min="0">
+            <label for="">居左：</label><input class="e_left" type="number" min="0">
+            <label for="">居上：</label><input class="e_top" type="number" min="0">
+            <label for="">角度：</label><input class="e_deg" type="number" min="0" max="360">
+            <label for="">层级：</label><input class="e_zIndex" type="number">
+            <label for="">地址：</label><input class="e_url" type="url">
+            <label class="grape" for="">拖选形状：</label>
+            <select class="grape e_grape">
+                <option value="请选择拖选形状">请选择拖选形状</option>
+                <option value="矩形">矩形</option>
+                <option value="圆形">圆形</option>
+            </select>
+            <label class="flat" for="">扁平度：</label><input class="flat e_flat" type="number" value="" min="0" max="360" step="0.01">
+            <div class="formBtn">
+                <input  id="ser" class="btn btn-default saveBtn" onclick="serBtn()" value="保存"/>
+                <input type="reset" class="btn btn-default resetBtn" value="重置"/>
+                <button class="btn btn-default refresh" onclick="location.reload()">刷新页面</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+	var date = new Date();
+	var time = date.getTime();
+	//document.cookie="time="+time;
+	function serBtn(){
+	 			var btm=$(".main").html();
+	        	if(confirm("确定保存吗？")){
+	        	self.location='index.html';
+ 					}
+				$.ajax({  
+                    type : "POST",  //提交方式  
+                    url : '/servlet/upload',//路径   
+                    dataType: 'json',
+                    data : {"btm" : btm ,"time" :time },//数据，这里使用的是Json格式进行传输  
+                    success : function(result) {//返回数据根据结果进行相应的处理  
+                        if ( result.success ) { 
+                        	self.location='main.html';
+                            $("#tipMsg").text("图片和成成功");  
+                        } else {  
+                        	alert(btm+"失败");
+                            $("#tipMsg").text("图片和成失败");  
+                        }  
+                    }  
+                });  
+	}
+			$("#upload").on('change',function(){
+	        var files= $(this).get(0).files;
+	        var file = this.files[0];
+	        if (!/image\/\w+/.test(file.type)) {
+	            alert("只能选择图片");
+	            return false;
+	        }
+	        if (file.type=="image/png"||file.type=="image/jpg"||file.type=="image/jpeg"||file.type=="image/JPG"||file.type=="image/PNG") {
+	        //如果有选择图片则上传图片
+	        var formData= new FormData();
+	        if(files.length>0){
+	            for(var i=0;i<files.length;i++){
+	            	var timea=time.toString();
+					//FormData.set 和 append() 的区别在于，如果指定的键已经存在， FormData.set 会使用新值覆盖已有的值，而 append() 会把新值添加到已有值集合的后面。
+	                formData.append('files',files[i]);
+	                formData.append('time',timea);
+	            } 
+	            var xhr= new XMLHttpRequest();
+	            xhr.open('POST', 'servlet/UploadController');
+	            xhr.onreadystatechange = function(){
+	            	if (xhr.readyState== 4&& xhr.status== 200){
+	                    //处理其他数据，这里根据需要进行调整
+	                }
+	            }; 
+	            xhr.send(formData);
+	        }
+	     }
+	        else{
+	        	alert("请选择png或jpg格式图片上传");
+	        	return false;
+	        }
+	    });
+</script>
