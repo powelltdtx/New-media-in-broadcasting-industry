@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点播播放页</title>
+		<link rel="stylesheet" href="css/common.css"/>
+		<link rel="stylesheet" href="css/vodplay.css"/>
+	</head>
+	<body>
+		<div class="box">
+			<div class="operation" id="seriesDiv">
+				<div class="chooseSeries">
+				   <div class="point"></div>
+				   <div class="title1">
+				   	  <span>选集</span>
+				   	  <span id="seriesnum">(第1集)</span>
+				   </div>
+				   <div class="seriesNum" id="seriesList">
+				   	<!--seriesSel为焦点样式-->
+				   	   <div class="seriesList seriesSel">
+				   	   	  <span>1</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>2</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>3</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>4</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	 <span>5</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>6</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>7</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>8</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>9</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>10</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>11</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>12</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>13</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>14</span>
+				   	   </div>
+				   	   <div class="seriesList">
+				   	   	  <span>15</span>
+				   	   </div>
+				   </div>
+				   <div class="sets" id="tab">
+				   	<!--setSel为焦点样式-->
+					   	<span class="tabnum">01-15</span>
+					   	<span class="tabnum">16-30</span>
+					   	<span class="tabnum">31-45</span>
+				   </div>
+			    </div>
+			</div>
+			<!--音量-->
+			<div class="voice" id="volumeDiv">
+				<div class="title3">
+					<span id="volumepercent">50%</span>
+				</div>
+				<!--进度条-->
+				     <!--voiceBar1原生样式-->
+				<div class="voiceBar1">
+					     <!--voiceBar2为进度条移动样式-->
+				    <div class="voiceBar2" id="volumecolorbar"></div>
+				</div> 
+				
+				<!--喇叭-->
+				<div class="voicePic"></div>
+			</div>
+			<!--断点续播操作-->
+			<div class="playBack" id="progressdiv">
+				<div class="title2" id="question">
+					<span>按“返回”键可以从头看</span>
+				</div>
+				<div class="tishi" id="playingtimediv">
+					<span id="playingtime">20:35</span>
+				</div>
+				<!--暂停-->
+				<div class="playPic" id="playstatus"></div>
+				<!--播放 display: none;-->
+				<div class="suspended"></div>
+				<!--进度条-->
+				      <!--progressBar1-->
+				<div class="progressBar1"></div>
+				      <!--progressBar2为进度条移动样式-->
+				<div class="progressBar2" id="progressbar"></div>
+				<div class="playTime">
+					<span id="playtime">20:35/110:49</span>
+				</div>
+				<div class="tishi2">
+					<span id="playprogramname">正在播放:大话西游之爱你一万年</span>
+				</div>
+			</div>
+			<!--暂停时遮罩-->
+			<div class="zhezhao" id="pauseDiv">
+				<div class="mask"></div>
+				<div class="maskPic">
+					<img id="playstatusimg" src="img/vodplay/player_icon_pause1.png"/>
+				</div>
+			</div>
+			<!--退出提示-->
+			<div class="exit">
+				<div class="mask"></div>
+				<div class="inform">
+					<div class="inforHeader">提示</div>
+					<div class="inforMain">
+						<div class="word">您确定要退出播放吗？</div>
+						<div class="advertising">
+							<img src="img/vodplay/popup_p1.jpg"/>
+							<img src="img/vodplay/popup_p1.jpg"/>
+					    </div>
+					    <div class="button">
+					    	<!--buttonSel为焦点样式-->
+					    	<div class="exitbutton determine buttonSel">确定</div>
+					    	<div class="exitbutton cancel">取消</div>
+					    </div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<script src="js/media.js"></script>
+		<script src="js/keyPress.js"></script>
+		<script src="js/master.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/back.js"></script>
+		<script src="js/vodplay.js"></script>
+		<iframe id="recordFrame" name="recordFrame" frameborder="0" height="0" width="0"></iframe>
+	</body>
+</html>
