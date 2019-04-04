@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电影一级</title>
+	<meta name="Page-View-Size" content="1280*720">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/movie.css">
+	<script type="text/javascript" src="http://117.71.25.104:81/sdms/js/data/ad/iptv_AHmovielist.js"></script>
+    <script type="text/javascript" src="js/ahtv_movielist.js"></script>
+	<script type="text/javascript" src="js/ad_load.js"></script>	
+	<script type="text/javascript" src="js/xiri_sdk_1.0.6.js"></script>
+</head>
+<body style="background:url(img/movielist/movieBg.png) no-repeat; width:1280px; height:720px;">
+	 <!--  <div id="tempid" style="position:absolute;left:10px;top:10px;color:red;width: 1260px;overflow: hidden;">test33</div>-->
+	<!--左侧导航边栏-->
+    <!--标题-->
+    <div id="title" style="position:absolute; left:75px; top:58px;"><img src=""></div>
+    <!--标题-->
+	<div class="leftBar">
+    	<!--切换按钮-->
+        <div class="start"><img src=""></div>
+        <div class="fun">搜索</div>
+    	<div id="chooseBar">
+        	<ul>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <!--右侧展示区-->
+    <div class="rightbar">
+    	<!--电影数量-->
+        <div class="recommonList">
+        	<div class="moveNum">热门专题</div>
+        	<div class="moveNum2">上次观看的关联推荐</div>
+        	<ul>
+            	<li class="recListLi"><img src="" width="303" height="163" id="img_0"></li>
+            	<li class="recListLi"><img src="" width="303" height="163" id="img_1"></li>
+            	<li class="recListLi"><img src="" width="303" height="163" id="img_2"></li>
+            </ul>
+        </div>
+    	<!--海报列表-->
+		<div id="page" style="position:absolute; font-size:25px; color:#5eddf1; height:50px; left:1135px; top:70px;  width:120px;"></div>
+        <div id="moveList">
+        	<ul class="moveListRow" id="moveListRow">
+            </ul>
+            
+        </div>
+    </div>
+	<script src="js/keyPress.js"></script>
+    <script src="js/master.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/config.js"></script>
+    <script src="js/movieList.js"></script>
+    <script src="js/movieListLoad.js"></script>
+    <script src="js/back.js"></script>
+</body>
+</html>
