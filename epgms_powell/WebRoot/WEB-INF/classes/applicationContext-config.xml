@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+				        http://www.springframework.org/schema/context 
+				        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+				 		http://cxf.apache.org/jaxws   
+   	 					http://cxf.apache.org/schemas/jaxws.xsd 
+        ">
+	<!-- 让spring自动装在属性类，不在需要getter和setter -->
+	<!-- bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/ -->
+	<!-- 通过注解来注册Service 加入以下语句就将上诉配置自动加入了 -->
+	<context:annotation-config />
+	<!-- 自动扫描cn.com.widgetdo.*所有类 -->
+	<context:component-scan base-package="com.besto.*" />
+
+	<!-- 数据库的配置文件 -->
+	<!-- <context:property-placeholder location="classpath:mysql-databaseConfig.properties"/> -->
+
+	<!-- 加载数据源 使用了 tomcat数据连接池 -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/epgms</value>
+		</property>
+	</bean>
+
+	<!-- Spring 事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 事务处理拦截器 -->
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<!-- 配置事务属性 -->
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED,-AppException,-Exception</prop>
+				<prop key="search*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 自动创建事务代理 -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- MyBatis配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 加载mybatis的配置文件 -->
+		<property name="configLocation" value="classpath:myBatis-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- mybatis自动扫描所有mapper -->
+	<bean class="com.besto.mybatis.scanner.MapperScannerConfig">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="basePackage" value="classpath:/com/besto/epgms/**/mapper"></property>
+	</bean>
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+<!-- 	<jaxws:endpoint id="GuardServiceForCxf" implementor="com.besto.epgms.websinterface.GuardlForCxfServiceImp"
+		address="/GuardForCxfService" /> -->
+
+</beans>
