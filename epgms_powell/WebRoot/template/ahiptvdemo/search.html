@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>搜索页</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/search.css" />
+</head>
+<body>
+	<div class="box">
+		<div class="left">
+			<!--搜索框-->
+			<div class="search" id="inputword"></div>
+			<div class="keyBords">
+				<!--keyBordSel为焦点样式-->
+				<div class="keyBord keyBordSel">A</div>
+				<div class="keyBord">B</div>
+				<div class="keyBord">C</div>
+				<div class="keyBord">D</div>
+				<div class="keyBord">E</div>
+				<div class="keyBord">F</div>
+				<div class="keyBord">G</div>
+				<div class="keyBord">H</div>
+				<div class="keyBord">I</div>
+				<div class="keyBord">J</div>
+				<div class="keyBord">K</div>
+				<div class="keyBord">L</div>
+				<div class="keyBord">M</div>
+				<div class="keyBord">N</div>
+				<div class="keyBord">O</div>
+				<div class="keyBord">P</div>
+				<div class="keyBord">Q</div>
+				<div class="keyBord">R</div>
+				<div class="keyBord">S</div>
+				<div class="keyBord">T</div>
+				<div class="keyBord">U</div>
+				<div class="keyBord">V</div>
+				<div class="keyBord">W</div>
+				<div class="keyBord">X</div>
+				<div class="keyBord">Y</div>
+				<div class="keyBord">Z</div>
+				<div class="keyBord">
+					<img src="img/search/search_icon_123.png" />
+				</div>
+				<div class="keyBord">
+					<img src="img/search/search_icon_wrong.png" />
+				</div>
+				<div class="keyBord">
+					<img src="img/search/search_icon_delete.png" />
+				</div>
+			</div>
+			<div class="KeyboardSwitch">
+				<div class="all">全键盘</div>
+				<div class="nine">九宫格</div>
+			</div>
+			<div class="note">
+				<img src="img/search/search_note.png" />
+			</div>
+		</div>
+		<div class="right">
+			<div class="jieguo1" id="jieguo1">
+				<div class="title1">热门搜索</div>
+				<div class="hotSearch">
+					<div class="searchPic">
+						<div class="picList">
+							<div class="picListName">全球风暴</div>
+							<img src="img/search/a2_dylb_p3.jpg" />
+						</div>
+						<div class="picList">
+							<div class="picListName">全球风暴</div>
+							<img src="img/search/a2_dylb_p8.jpg" />
+						</div>
+						<!--picListSel为外框焦点样式-->
+						<div class="picList">
+							<!--.picListNameSel电影名焦点样式-->
+							<div class="picListName">全球风暴</div>
+							<img src="img/search/a3_dsjxq_p1.jpg" width="174" height="254px" />
+						</div>
+						<div class="picList">
+							<div class="picListName">全球风暴</div>
+							<img src="img/search/a2_dylb_p4.jpg" />
+						</div>
+					</div>
+					<div class="searchList">
+						<div class="result">维多利亚的秘密2017</div>
+						<div class="result">维多利亚的秘密2017</div>
+						<div class="result">维多利亚的秘密2017</div>
+						<div class="result">维多利亚的秘密2017</div>
+						<div class="result">维多利亚的秘密2017</div>
+						<div class="result">维多利亚的秘密2017</div>
+					</div>
+				</div>
+			</div>
+			<div class="jieguo2" id="jieguo2">
+				<div class="title2">搜索结果</div>
+				<div class="nav-penl">
+					<div class="nav navSel">全部</div>
+					<div class="nav">电影</div>
+					<div class="nav">电视剧</div>
+					<div class="nav">综艺</div>
+				</div>
+				<div class="line2"></div>
+				<div class="result2" id="resultsearch">
+					<div class="resultList resultListSel">
+						<div class="resultListName resultListNameSel">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+					<div class="resultList">
+						<div class="resultListName">爸爸去哪了</div>
+						<img src="img/search/a3_zyxq_p1.jpg" width="174" height="254" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<iframe id="dataFrame" name="dataFrame" frameborder="0" height="0" width="0"></iframe>
+	<script src="js/keyPress.js"></script>
+	<script src="js/master.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/back.js"></script>
+	<script src="js/search.js"></script>
+</body>
+</html>
