@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<base href="<%=basePath%>"> 
+		<meta charset="UTF-8">
+		<title>模板生成</title>
+		<link rel="stylesheet" type="text/css" href="css/dwg.css" />
+	</head>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/gf.js"></script>
+	<body>
+		<div id="box" class="box"></div>
+		<!--目标拖动进入的区域-->
+		<div class="pic" id="pic">
+			    <button id="sx">刷新</button>
+				<button id="ser" onclick="serBtn()">保存</button>
+				<input id= "file" type="file" value="上传文件" onchange="getImgURL(this)" 
+				style="width: 70px;" enctype="multipart/form-data">
+		</div>
+		<div class="eduit">
+			<ul>
+				<li>编辑</li>
+				<li>宽度&nbsp;&nbsp;<input type="text" class="w" /></li>
+				<li>高度&nbsp;&nbsp;<input type="text" class="h" /></li>
+				<li>居左&nbsp;&nbsp;<input type="text" class="l" /></li>
+				<li>居上&nbsp;&nbsp;<input type="text" class="t" /></li>
+				<li>角度&nbsp;&nbsp;<input type="text" class="d" /></li>
+				<li>层级&nbsp;&nbsp;<input type="text" class="z" /></li>
+				<li>地址&nbsp;&nbsp;<input type="text" class="u" /></li>
+				<li><span style="display:inline-block;width: 41px;">字号</span>
+					<input type="text" class="u" /></li>
+				<li>
+					<button id="getVal">确定</button>
+					<button id="clearBtn">重置</button>
+				</li>
+			</ul>
+		</div>
+		<div class="text" id="text"></div>
+	</body>
+</html>
+<script>
+	var date = new Date();
+	var time = date.getTime();
+	document.cookie="time="+time;
+	function serBtn(){
+	 			var btm=$("#box").html();
+		    	// var names=$("input[type=file]").val();
+	        	//	console.log(names);
+	        	if(confirm("确定保存吗？")){
+ 					self.location='main.html';
+ 					}
+				$.ajax({  
+                    type : "POST",  //提交方式  
+                    url : 'servlet/upload',//路径   
+                    dataType: 'json',
+                    data : {"btm" : btm ,"time" :time },//数据，这里使用的是Json格式进行传输  
+                    success : function(result) {//返回数据根据结果进行相应的处理  
+                        if ( result.success ) { 
+                            $("#tipMsg").text("图片和成成功");  
+                        } else {  
+                        	alert(btm+"失败");
+                            $("#tipMsg").text("图片和成失败");  
+                        }  
+                    }  
+                });  
+	}
+		$('#file').on('change',function(){
+	        var files= $(this).get(0).files;
+	        var file = this.files[0];
+	        if (!/image\/\w+/.test(file.type)) {
+	            alert("只能选择图片");
+	            return false;
+	        }
+	        if (file.type=="image/png"||file.type=="image/jpg"||file.type=="image/jpeg"||file.type=="image/JPG"||file.type=="image/PNG") {
+	        //如果有选择图片则上传图片
+	        var formData= new FormData();
+	        if(files.length>0){
+	            for(var i=0;i<files.length;i++){
+	            var timea=time.toString();
+	//FormData.set 和 append() 的区别在于，如果指定的键已经存在， FormData.set 会使用新值覆盖已有的值，而 append() 会把新值添加到已有值集合的后面。
+	                formData.append('files',files[i]);
+	                formData.append('time',timea);
+	            } 
+	            var xhr= new XMLHttpRequest();
+	            xhr.open('POST', 'servlet/UploadController');
+	            xhr.onreadystatechange = function(){
+	            	if (xhr.readyState== 4&& xhr.status== 200){
+	                    //处理其他数据，这里根据需要进行调整
+	                }
+	            }; 
+	            xhr.send(formData);
+	        }
+	     }
+	        else{
+	        	alert("请选择png或jpg格式图片上传");
+	        	return false;
+	        }
+	    });
+	    
+</script>
