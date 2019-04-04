@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>预警监控</title>
+<link rel="stylesheet" href="resource/newpages/css/bootstrap.min.css">
+<link rel="stylesheet" href="resource/newpages/css/font-awesome.min.css">
+<link rel="stylesheet" href="resource/newpages/css/common.css">
+<link rel="stylesheet" href="resource/newpages/css/cpsp.css">
+<link rel="stylesheet" href="resource/newpages/css/layer.css" />
+<style type="text/css">
+	.left_nav{
+		height: 720px !important;
+	}
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<!--主内容部分-->
+		<main> 
+			
+		<!--左侧导航-->
+	<nav class="left_nav navbar-left bg-info">
+		<content class="content">
+		<div class="con">
+			<a class="con_sub headerCur" href="#"  id="serverWarning" onclick="toGo('heartBeat_search.do', 'serverWarning')"><i></i>服务器监控</a>
+		</div>
+		<div class="con">
+			<a class="con_sub CMSManage" href="#" id="fileWarning" onclick="toGo('fileGuard_search.do', 'fileWarning')"><i></i>文件监控</a>
+		</div>
+		</content> </nav> 
+		<iframe style="width:84%;height:700px" name="right" id="rightframe"
+				src="heartBeat_search.do" frameborder="0" scrolling="no"></iframe>
+	</main>
+	</div>
+	<script src="resource/newpages/js/jquery-3.js"></script>
+	<script src="resource/newpages/js/bootstrap.js"></script>
+	<script src="resource/newpages/js/common.js"></script>
+	<script src="resource/newpages/js/layer.js"></script>
+</body>
+</html>
+<script>
+	function toGo(url, id) {
+		$('.headerCur').removeClass('headerCur');
+		$('#' + id).addClass('headerCur');
+		document.getElementById('rightframe').src = "";
+		document.getElementById('rightframe').src = url;
+	}
+</script>
