@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+.addpic th {
+	line-height: 34px;
+	vertical-align: top;
+	text-align: right;
+	font-weight: normal;
+	padding: 10px;
+}
+.addpic td {
+	vertical-align: bottom;
+	padding: 10px 0;
+	padding-left: 50px;
+}
+.addpic select {
+	width: 230px;
+}
+
+.layer-tit {
+	height: 40px;
+	line-height: 40px;
+}
+.upload {
+	_display: none;
+	display: inline-block;
+	width: 80px;
+	height: 28px;
+	position: relative;
+	left:-96%;
+}
+.upload .file-upload {
+	position: absolute;
+	left: 65px;
+	top: 0;
+	width: 140px;
+	height: 40px;
+	line-height:40px;
+	color:#ffffff;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
+.file-upload-ie6 {
+	display: none;
+	_display: block;
+	width: 200px;
+}
+.buttons {
+	width: 800px;
+	text-align: center;
+	margin-top: 160px;
+    margin-left: -23px;
+}
+.buttons .btn{
+	/*  width: 140px !import;
+	height: 40px;
+	line-height:40px;  */
+}
+.buttons input {
+	margin: 0 10px;
+}
+.blue-btn {
+	background-color: #FF7A19;
+	border: 1px solid #fff;
+    margin-left: 76px;
+}
+.buttons input {
+	margin: 0 10px;
+	margin-top: -210px;
+	margin-right: 210px;
+	margin-left: -88px;
+}
+.templatePoolName{
+	font-size: 15px;
+	margin-left: 45px;
+	margin-top: 28px;
+}
+}
+.templatePoolInput{
+	font-size:15px;
+}
+.picImg{
+	width:120px;
+	height:80px;
+	
+}
+
