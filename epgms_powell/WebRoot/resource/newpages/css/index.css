@@ -1,0 +1,242 @@
+@charset "UTF-8";
+/*布局*/
+/*.fa{*/
+    /*padding:0 5px;*/
+/*}*/
+
+
+
+/*.scroll_bar{*/
+    /*background: rgb(205, 205, 205) none repeat scroll 0 0; width: 4px;*/
+    /*position: fixed; top: 50px; opacity: 0.9; border-radius: 7px; z-index: 99; left: 17.5%; height: 477px;*/
+    /*display: none;*/
+/*}*/
+
+/*data*/
+.table th{
+    text-align: center;
+}
+.table>tbody>tr>td{
+    padding: 5px;
+    position: relative;
+}
+.table tr>td:nth-child(2),
+.table tr>td:nth-child(3){
+    max-width: 150px;
+    overflow: hidden;
+}
+.table tr td span{
+    white-space: normal!important;
+}
+
+.select{
+    width: 132px;
+    height: 33px;
+    border-radius: 4px;
+    padding:0;
+    margin:0;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1;
+    text-align: left;
+    /*z-index: 9999!important;*/
+    position: absolute;
+}
+.select:hover{
+    border:1px solid #66AFE9;
+    box-shadow:0 0 2px #66AFE9;
+    cursor: default;
+    /*z-index: 9999!important;*/
+}
+.select li{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.select li:nth-child(1){
+    height: 33px;
+    line-height: 33px;
+    /*z-index: 999;*/
+    /*margin-bottom: 2px;*/
+}
+.select li:nth-child(1):hover{
+    background: #FFF7F1;
+    /*border:1px solid #66AFE9;*/
+    /*box-shadow:0 0 2px #66AFE9;*/
+}
+.select li:hover{
+    background: #FF7A19;
+}
+.select li span{
+    padding-left: 16px;
+    display: block;
+    /*z-index: 9999!important;*/
+    position: relative;
+}
+.select i{
+    display: inline-block;
+    text-align: right;
+    /*padding-left: 40px;*/
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+.option{
+    height: 22px;
+    line-height: 22px;
+    background: #fff;
+    /*z-index: 9999;*/
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    position: relative;
+}
+.option:nth-child(2){
+    border-top: 1px solid #CCCCCC;
+    margin-top: -1px;
+}
+.option:nth-last-child(1){
+    border-bottom: 1px solid #CCCCCC;
+}
+.more{
+    position: relative;
+    top: 2px;
+    left: 10px;
+}
+
+/*自定义滚动条*/
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.content::-webkit-scrollbar,
+.data::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+    /*background-color: #808080;*/
+    /*background-color: #eeeeee;*/
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.content::-webkit-scrollbar-track,
+.data::-webkit-scrollbar-track{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    border-radius: 10px;
+    /*background-color: #c0c0c0;*/
+    background-color: #ddd;
+}
+/*定义滑块，内阴影及圆角*/
+.content::-webkit-scrollbar-thumb,
+.data::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    /*background-color: #808080;*/
+    background-color: rgba(0,0,0,.2);
+}
+
+/*head导航*/
+/*heade导航部分*/
+
+/*中部内容部分导航   id 视频。。。*/
+.table thead th{
+	background-color:#ff7a19;
+}
+/*thead tr th span{*/
+	/*color: #fffff;*/
+/*}*/
+/*高级搜索按钮*/
+.btn .more .btn-primary{
+	color: #FF7A19;
+    
+}
+
+.advancedSearch{
+	color: #FF7A19;
+	position: absolute;
+    /*float: left;*/
+    padding-left: 672px;
+    
+}
+/*main部分*/
+.main{
+	
+}
+/*高级搜索按钮*/
+ /*.primary {*/
+	/*background-color: #fffff !important;*/ 
+/*}*/
+/*.btn .primary{*/
+	/*background-color: #fffff !important;*/
+/*}*/
+header {
+	/*border-bottom: 4px solid red ;*/
+}
+.data .navbar-left {
+	position:relative;
+}
+.btn .more{
+	position:absolute;
+	right:20px;
+}
+/*左侧导航*/
+
+/*操作栏头部*/
+.spanCls{
+	color: #FFFFFF;
+	font-weight: 400;
+}
+/*高级搜索*/
+.btn .more .primary{
+	position: absolute;
+	
+	float: right;
+}
+
+/*查询按钮*/
+.btn .btn-default .primary{
+	border: 1px solid #FF7A19;
+}
+.btn-default:hover{
+	border-color:#FF7A19;
+	background: #FFFFFF;
+}
+.btn-default{
+	border:1px solid #FF7A19;
+	}
+
+/*中间内容*/
+.data{
+
+}
+.table-hover>tbody>tr:hover{
+	background:#fff7f1;
+}
+/*操作按钮*/
+.form-control option a:hover{
+	background-color: #FF7A19 !important;
+}
+
+
+/*弹出层*/
+#layui-laydate1,#layui-laydate2,#layui-laydate3,#layui-laydate4,#layui-laydate5,#layui-laydate6,#layui-laydate7{
+    left: 732px;
+    top: 100px;
+}
+.preview{
+    width: 102px;
+    height: 77px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+.previewDel{
+    margin-left: 5px;
+}
+.fa-trash{
+    font-size: 20px;
+}
+.popup_info{
+    /*height: 50%;*/
+}
+.popup_con button{
+    /*border:1px solid #FF7A19;*/
+}
+
