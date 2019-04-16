@@ -1,0 +1,500 @@
+/*监控系统*/
+.box{
+	width: 1280px;
+	height: 720px;
+	background: url(../img/bg.jpg) no-repeat;
+}
+/*左边*/
+.left{
+	position: relative;
+	left: 26px;
+	top: 39px;
+	width: 349px;
+	height: 651px;
+}
+.left .date span{
+	text-align: center;
+	font-size: 16px;
+	position: absolute;
+	width: 54px;
+	height: 26px;
+	line-height: 26px;
+	line-height: 26px;
+	background:#192f62;
+}
+.left .date span:nth-child(1){
+	background:#2465b7;
+}
+.left .date span:nth-child(2){
+	margin-left: 54px;
+}
+.serData{
+	width: 349px;
+	height: 208px;
+	position: absolute;
+	top:49px;
+	left: 0;
+	background:url(../img/bgTit.jpg);
+}
+.serDataTit,.AnalysisTit{
+	position: absolute;
+	left: 95px;
+	top: -10px;
+	text-align: center;
+	background:#192f62;
+	font-size: 12px;
+	width: 163px;
+	height: 26px;
+	color: #FFFFFF;
+	line-height: 26px;
+}
+.serDataTit{
+	/*background: url(../img/2-2yujingdanshuju.jpg)no-repeat;*/
+}
+.serData .serDataList{
+	text-align: center;
+	width: 169px;
+	height: 200px;
+    line-height: 120px;
+	font-size: 18px;
+	display: inline-block;
+}
+.serData .serDataList span{
+	color: #FFFFFF;
+}
+.serData .serDataList .num{
+	margin-top: -53px;
+	font-size: 24px;
+	color:#46f9ff 
+}
+#mouth{
+	color:#3bef3a; 
+}
+.Analysis{
+	position: absolute;
+	top: 283px;
+	width: 349px;
+	height: 368px;
+	background: url(../img/3-1biankuang.jpg);
+}
+.AnalysisTit{
+	/*background: url(../img/3-2yujingdanjiexi.jpg) no-repeat;*/
+}
+.Analysis .AnalysisClass{
+	position: absolute;
+	left: 95px;
+	top: 20px;
+	text-align: center;
+	color:#2465b7;
+	font-size: 14px;
+	width: 163px;
+	height: 26px;
+}
+.Analysis .chart{
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	width: 314px;
+	height: 156px;
+}
+.Analysis .line{
+	position: absolute;
+	top: 170px;
+	left: 40px;
+}
+.Analysis .city{
+	position: absolute;
+	top: 140px;
+	left: 10px;
+	width: 336px;
+	height:230px;
+}
+/*中间区域*/
+.middle{
+	width: 497px;
+	height:598px;
+	position: absolute;
+	left: 390px;
+	top: 85px;
+	background: url(../img/4-1biankuang.jpg);
+}
+.middle .tit2{
+	position: absolute;
+	left: 175px;
+	top: -10px;
+	text-align: center;
+	background:#192f62;
+	font-size: 12px;
+	width: 163px;
+	height: 26px;
+	color: #FFFFFF;
+	line-height: 26px;
+}
+.middle .map{
+	width: 438px;
+	height: 540px;
+	position:absolute;
+	top: 30px;
+    left: 20px;
+}
+
+.middle .lebel{
+	position: absolute;
+	top: 480px;
+	left: 435px;
+}
+.middle .lebel .lebeList .one1,.one2,.one3,.two{
+	font-size: 12px;
+	display: inline-block;
+}
+.middle .lebel .lebeList .one1,.one2,.one3{
+	width: 10px;
+	height: 10px;
+}
+.middle .lebel .lebeList .one1{
+	background:#ff3838;
+}
+.middle .lebel .lebeList .one2{
+	background:#22ac38;
+}
+.middle .lebel .lebeList .one3{
+	background:#f39800;
+}
+.dateTime{
+	text-align: center;
+	position: absolute;
+	top: 38px;
+	left:1008px;
+	width:240px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #173375;
+}
+.dateTime .date,.time{
+	font-size: 18px;
+	display: inline-block;
+	color:#f5f5f7;
+}
+.dateTime span:nth-child(2){
+	padding-left: 15px;
+}
+/*中间地区*/
+/*合肥*/
+.hefei{
+	position: relative;
+	left: 209px;
+	top: 245px;
+}
+/*滁州*/
+.chuzhou{
+	position: relative;
+	left: 271px;
+	top: 207px;
+}
+/*黄山市*/
+.huangshan{
+	position: relative;
+	left: 277px;
+    top: 443px;
+}
+
+/*警告颜色*/
+.middle .red_big{
+	display: inline-block;
+    position: relative;
+	left: 9px;
+    top: 64px;
+	background-color: rgba(255,0,0,0.3);  
+	width: 25px;  
+	height: 25px;  
+	border-radius: 50%;
+	z-index: 9999;
+	display: none;
+}
+.middle .red_small{
+	    position: absolute;
+    	left: 8px;
+    	top: 8px;
+	    background-color: rgba(255,0,0,0);
+	    width: 10px;  
+	    height: 10px;  
+	    border-radius: 50%; 
+	    animation:myfirst 0.5s;
+	    animation-iteration-count: infinite; 
+}
+.middle .green_big{
+	position: relative;
+	left: 9px;
+    top: 64px;
+	background-color: rgba(0,255,0,0.3);  
+	width: 25px;  
+	height: 25px;  
+	border-radius: 50%;
+	z-index: 9999;
+	display: none;
+}
+.middle .green_small{
+	    position: absolute;
+    	left: 8px;
+    	top: 8px;
+	    background-color: rgba(0,255,0,0);
+	    width: 10px;  
+	    height: 10px;  
+	    border-radius: 50%; 
+	    animation:mysecond 0.5s;
+	    animation-iteration-count: infinite; 
+}
+.middle .yellow_big{
+	position: relative;
+	left: 9px;
+    top: 64px;
+	background-color: rgba(252,255,0,0.3);  
+	width: 25px;  
+	height: 25px;  
+	border-radius: 50%;
+	z-index: 9999;
+	display: none;
+}
+.middle .yellow_small{
+	 position: absolute;
+	left: 8px;
+	top: 8px;
+    background-color: rgba(252,255,0,0);
+    width: 10px;  
+    height: 10px;  
+    border-radius: 50%; 
+    animation:mythree 0.5s;
+    animation-iteration-count: infinite;
+}
+/*动画*/		
+@keyframes myfirst{
+	0%   { background-color: rgba(255,0,0,0);}
+	100% { background-color: rgba(255,0,0,1);}
+}
+@keyframes mysecond{
+	0%   { background-color: rgba(0,255,0,0);}
+	100% { background-color: rgba(0,255,0,1);}
+}
+@keyframes mythree{
+	0%   { background-color: rgba(252,255,0,0);}
+	100% { background-color: rgba(252,255,0,1);}
+}
+
+/*警告结束*/
+
+/*右边*/
+.right{
+	width: 343px;
+	height: 589px;
+	background: url(../img/5-1biankuang.jpg);
+	position: absolute;
+	left: 910px;
+	top: 85px;
+}
+.right .serverTit{
+	position: absolute;
+	left: 95px;
+	top: -10px;
+	text-align: center;
+	background:#192f62;
+	font-size: 12px;
+	width: 163px;
+	height: 26px;
+	color: #FFFFFF;
+	line-height: 26px;
+}
+/*蜂窝*/
+.right .list{
+	position: absolute;
+	top: 95px;
+	left:40px;
+}
+.right .list .serverListone{
+	display: inline-block;
+}
+.right .list .serverListone:nth-child(2){
+	position:absolute;
+	left: 63px;
+	top: 0px;
+}
+.right .list .serverListone:nth-child(3){
+	position:absolute;
+	top: 0px;
+	left: 125px;
+}
+.right .list .serverListone:nth-child(4){
+	position:absolute;
+	top: 0px;
+	left: 188px;
+}
+.right .list .serverListone .serName span{
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	display: block;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.right .list .serverListone .serName span:nth-child(2){
+	position: absolute;
+	top: 36px;
+	left: 30px;
+}
+.right .Servermiddle{
+	position: absolute;
+	top: 152px;
+	left: 71px;
+}
+.right .Servermiddle .serverListTwo{
+	display: inline-block;
+}
+.right .Servermiddle .serverListTwo:nth-child(2){
+	position:absolute;
+	left: 63px;
+	top: 0px;
+}
+.right .Servermiddle .serverListTwo:nth-child(3){
+	position:absolute;
+	top: 0px;
+	left: 125px;
+}
+.right .Servermiddle .serverListTwo .serName span{
+	color: #FFFFFF;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	display: block;
+	font-size: 12px;
+}
+.right .Servermiddle .serverListTwo .serName span:nth-child(2){
+	position: absolute;
+	top: 36px;
+	left: 30px;
+}
+.right .Serverthree{
+	position: absolute;
+	top: 352px;
+	left: 71px;
+}
+.right .Serverthree .serverListhree{
+	display: inline-block;
+}
+.right .ServerBottom{
+	position: absolute;
+	top: 208px;
+	left: 40px;
+}
+.right .ServerBottom .serverListThree{
+	display: inline-block;
+}
+.right .ServerBottom .serverListThree:nth-child(2){
+	position:absolute;
+	left: 63px;
+	top: 0px;
+}
+.right .ServerBottom .serverListThree:nth-child(3){
+	position:absolute;
+	top: 0px;
+	left: 125px;
+}
+.right .ServerBottom .serverListThree:nth-child(4){
+	position:absolute;
+	top: 0px;
+	left: 188px;
+}
+.right .ServerBottom .serverListThree .serName span{
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	display: block;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.right .ServerBottom .serverListThree .serName span:nth-child(2){
+	position: absolute;
+	top: 36px;
+	left: 30px;
+}
+.right .serverLast{
+	position: absolute;
+	top: 265px;
+	left: 71px;
+}
+.right .serverLast .serverListfour{
+	display: inline-block;
+}
+.right .serverLast .serverListfour:nth-child(2){
+	position:absolute;
+	left: 63px;
+	top: 0px;
+}
+.right .serverLast .serverListfour:nth-child(3){
+	position:absolute;
+	top: 0px;
+	left: 125px;
+}
+.right .serverLast .serverListfour .serName span{
+	color: #FFFFFF;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	display: block;
+	font-size: 12px;
+}
+.right .serverLast .serverListfour .serName span:nth-child(2){
+	position: absolute;
+	top: 36px;
+	left: 30px;
+}
+.right .rightFoot{
+	position: absolute;
+	top:400px;
+	left: 42px;
+}
+.right .rightFoot .footTop .winng{
+	padding-left: 5px;
+	text-align: center;
+	width: 90px;
+	height: 40px;
+	line-height: 28px;
+	display: inline-block;
+}
+.right .rightFoot .footTop .winng:nth-child(1){
+	background: url(../img/5-3fuwuqizongshu.png) no-repeat 0px 16px;
+}
+.right .rightFoot .footTop .winng:nth-child(2){
+	background: url(../img/5-4gaojing.png) no-repeat 0px 16px;
+}
+.right .rightFoot .footTop .winng:nth-child(3){
+	background: url(../img/5-5guzhang.png) no-repeat 0px 16px;
+}
+.right .rightFoot .footTop .winng span{
+	color: #FFFFFF;
+	font-size: 18px;
+	display: block;
+}
+.right .rightFoot .footTop .winng span:nth-child(2){
+	font-size: 12px;
+	display: block;
+}
+.right .rightFoot .footBottom .winng{
+	text-align: center;
+	width: 90px;
+	height: 40px;
+	line-height: 28px;
+	display: inline-block;
+}
+.right .rightFoot .footBottom .winng span{
+	color: #FFFFFF;
+	font-size: 12px;
+	display: block;
+}
+.right .rightFoot .footBottom .winng:nth-child(1){
+	background: url(../img/5-6zhengchang.png) no-repeat 0px 7px;
+}
+.right .rightFoot .footBottom .winng:nth-child(2){
+	background: url(../img/5-7gaojing-.png) no-repeat 0px 7px;
+}
+.right .rightFoot .footBottom .winng:nth-child(3){
+	background: url(../img/5-8guzhang.png) no-repeat 0px 7px;
+}
