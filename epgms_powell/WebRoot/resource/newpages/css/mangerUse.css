@@ -1,0 +1,160 @@
+/*基础样式*/
+header a{
+	color: #333333;
+}
+
+#newUse,#newRole{
+	color: #FF7A19;
+    position: absolute;
+    left: -123px;
+    top: 19px;
+    border: 1px solid #FF7A19;
+    background-color: #FFFFFF;
+}
+/*用户添加*/
+.form-head{
+	height: 91px;
+	line-height: 91px;
+	border-bottom: 1px solid #FF7A19;
+}
+.crumb{
+	margin-left: 40px;
+}
+.crumb a{
+	color: #FF7A19;
+	font-size: 16px;
+}
+.form-main{
+	margin-left: -266px;
+}
+.form-main input{
+  /*border: 1px solid #FF7A19;*/
+}
+.form-main table{
+    margin-left: 300px;
+}
+.ipt {
+    width: 214px;
+    padding: 8px;
+    line-height: 14px;
+    font-size: 14px;
+    /*color: #7297ca;*/
+    border: 1px solid #CCCCCC;
+}
+.remark{
+	width: 635px;
+    padding: 8px;
+    line-height: 22px;
+    font-size: 14px;
+    color: #7297ca;
+}
+.choseSele{
+	padding-left: 50px;
+	height: 36px;
+}
+.buttons,.warn{
+	 margin-top: 20px;
+	 margin-left: 615px;
+}
+.warn{
+	color: #FF7A19;
+}
+.buttons input{
+	color: #FFFFFF;
+	background-color:#FF7A19;
+}
+.form-main i{
+	color:#FF7A19;
+}
+.form-main .tsy{
+	/*display: none;*/
+}
+.tsy{
+    color: #d00000;
+    margin-left: 10px;
+    display: none;
+}
+.cbox ul li {
+	 float:left; 
+	 margin-right:20px; 
+	 margin-top:5px;
+}
+.cbox  input {
+	 vertical-align:middle;
+}
+.cbox  label {
+	 margin-left:5px;
+	 display:inline-block; 
+	 vertical-align:middle;
+	 color: #333333;
+}
+.cbox ul { 
+	overflow:hidden;
+   margin-bottom:5px;
+}
+.cbox .cT {
+	 color:#FFF;
+}
+.cbox {
+	 border-bottom:1px solid #FF7A19; 
+	 margin-bottom:15px;
+}
+.cT label{
+	color:#FF7A19 ;
+}
+.tsy1{
+	color: red;
+}
+/*遮罩层*/
+.mask{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 106%;
+	background: #000;
+	opacity: 0.5;
+	display: none;
+}
+.cancelFreeze{
+	width: 600px;
+	height: 300px;
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	margin-left: -197px;
+	padding-bottom: 20px;
+	background: #fff;
+	display: none;
+}
+.layer-msg,.buttons{
+	margin: 40px 460px;
+	text-align: center;
+	font-size: 24px;
+	color: #FF7A19;
+}
+.buttons .btn,.layerButtons .btn,.layerButtonsDel .btn{
+	color: #FFFFFF;
+	background: #FF7A19;
+}
+.layerMsg{
+	margin: 60px 10px;
+}
+.layerMsgDel{
+	margin: 60px 0px;
+}
+.layerButtons{
+	margin: 80px 40px;
+	text-align: center;
+	font-size: 24px;
+	color: #FF7A19;
+}
+.layerButtonsDel{
+	margin: 40px 40px;
+	text-align: center;
+	font-size: 24px;
+	color: #FF7A19;
+}
+.operTit{
+	margin: 60px 10px;
+}
