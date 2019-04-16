@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>模板下发</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="layDate/laydate/theme/default/laydate.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/cpsp.css">
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<!--头部-->
+			<header class="header">
+				<div class="row clearfix">
+					<div class="col-md-2 logo clearfix">
+						<span class="logoText">播控2.0系统</span>
+						<div class="user col-md-11">
+							<span>admin</span>
+							<span>退出</span>
+						</div>
+					</div>
+					<div class="col-md-10 text-center header_nav clearfix">
+						<div class="col-md-3" style="border-bottom: 2px solid #FF7A19 !important;">
+							<a href="createTemple.html" class="t" style="color: #FF7A19 !important;">模板管理</a>
+						</div>
+						<div class="col-md-3">
+							<a href="mangeFile.html" class="f">文件管理</a>
+						</div>
+						<div class="col-md-3">
+							<a href="cpsp.html">预警监控</a>
+						</div>
+						<div class="col-md-3">
+							<a href="javascript:void(0);">系统管理</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!--主内容部分-->
+			<main>
+				<!--左侧导航-->
+				<nav class="left_nav navbar-left bg-info">
+					<content class="content">
+						<div class="con">
+							<a class="con_sub" href="createTemple.html"><i></i>模板创建</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="tempView.html"><i></i>模板审核</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);" id="main"><i></i>模板开发</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);" style="color: #FF7A19 !important;"><i></i>模板下发</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);"><i></i>模板库</a>
+						</div>
+					</content>
+				</nav>
+				<!--右侧数据(默认)-->
+				<div class="data data_table navbar-left dataDefault">
+					<div class="data-search" style="width: 85%;">
+						<form action="" class="form-inline">
+							<div class="form-group col-md-3 ID">
+								<label for="" class="col-md-6">服务器分组</label>
+								<input type="text" class="col-md-6">
+							</div>
+							<div class="form-group col-md-3 ID">
+								<label for="" class="col-md-5">服务器名称</label>
+								<input type="text" class="col-md-6">
+							</div>
+							
+							
+                            <div class="form-group col-md-3 ID">
+								<label for="" class="col-md-5">服务器IP</label>
+								<input type="text" class="col-md-6">
+							</div>
+							<div class="form-group col-md-3">
+								<label for="" class="col-md-6">模板名称</label>
+								<input type="text" class="col-md-6">
+							</div>
+							
+							<div class="form-group col-md-4 ID">
+								<label for="" class="col-md-5">下发状态</label>
+								<select name="" class="sel col-md-6">
+									<option value="">--全部--</option>
+									<option value="">下发中</option>
+									<option value="">成功</option>
+									<option value="">失败</option>
+								</select>
+							</div>
+							<div class="form-group col-md-6 ID">
+								<label for="" class="time">时间</label>
+								<input type="text" name="templetVO.begintime" maxlength="20" value="" id="bTime" class="date-icon ipt"/>
+					            <span>-</span>
+					            <input type="text" name="templetVO.endtime" maxlength="20" value="" id="eTime" class="date-icon ipt"/>
+							</div>
+							
+							</div>
+							    
+							<div class="search_btn">
+								<button class="btn btn-default primary" type="submit" id="que">查询</button>
+								<button class="btn btn-default primary">重置</button>
+								<button class="btn btn-default primary">重新下发</button>
+						</form>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover text-center">
+							<thead>
+								<tr>
+									<th><input class="th_checkbox checkBox" type="checkbox"></th>
+									<th><span class="spanCls">模板名称</span></th>
+									<th><span class="spanCls">服务器分组</span></th>
+									<th><span class="spanCls">服务器IP</span></th>
+									<th><span class="spanCls">服务器名称</span></th>
+		                            <th><span class="spanCls">下发状态</span></th>
+		                            <th><span class="spanCls">下发时间</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>济南基础版4.0</span></td>
+									<td><span>济南</span></td>
+									<td><span>192.168.10.1</span></td>
+									<td><span>EPG服务器1</span></td>
+									<td><span>下发中</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr bgcolor="red">
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>济南基础版4.0</span></td>
+									<td><span>济南</span></td>
+									<td><span>192.168.10.2</span></td>
+									<td><span>EPG服务器2</span></td>
+									<td><span>失败</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+                                    <td><span>济南基础版2.0</span></td>
+									<td><span>济南</span></td>
+									<td><span>192.168.10.1</span></td>
+									<td><span>EPG服务器1</span></td>
+									<td><span>成功</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>济南基础版1.0</span></td>
+									<td><span>济南</span></td>
+									<td><span>192.168.10.1</span></td>
+									<td><span>EPG服务器1</span></td>
+									<td><span>成功</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>青岛基础版4.0</span></td>
+									<td><span>青岛</span></td>
+									<td><span>192.168.10.3</span></td>
+									<td><span>EPG服务器3</span></td>
+									<td><span>下发中</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr bgcolor="red">
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>青岛基础版4.0</span></td>
+									<td><span>青岛</span></td>
+									<td><span>192.168.10.4</span></td>
+									<td><span>EPG服务器4</span></td>
+									<td><span>失败</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+                                    <td><span>青岛基础版2.0</span></td>
+									<td><span>青岛</span></td>
+									<td><span>192.168.10.3</span></td>
+									<td><span>EPG服务器3</span></td>
+									<td><span>成功</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" type="checkbox">
+									</td>
+									<td><span>青岛基础版1.0</span></td>
+									<td><span>青岛</span></td>
+									<td><span>192.168.10.3</span></td>
+									<td><span>EPG服务器3</span></td>
+									<td><span>成功</span></td>
+									<td><span>2019-05-09 10:09:39</span></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="page center-block">
+							<ul>
+								<li>
+									<button type="button" class="">首页</button>
+									<button type="button" class="">上一页</button>
+									<button type="button" class="">下一页</button>
+									<button type="button" class="">尾页</button>
+									<span>每页显示
+                                    <select name="" id="">
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                                                                                            条</span> 跳转到
+									<input type="text" size="2" />页
+									<span>1/1</span>
+									<button type="button" class="pageBtn5" style="background-color: #ff7a19;">跳转</button>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="layDate/laydate/laydate.js"></script>
+		<script src="js/common.js"></script>
+		<!--<script src="js/cscp.js"></script>-->
+	</body>
+
+</html>
+<script>
+	//执行一个laydate实例
+	laydate({
+		istime: true,
+		isclear: false, 
+		elem: '#bTime',
+		format: 'YYYY-MM-DD hh:mm:ss'
+    });
+	laydate({
+		istime: true,
+		isclear: false, 
+		elem: '#eTime',
+		format: 'YYYY-MM-DD hh:mm:ss'
+    });
+</script>
