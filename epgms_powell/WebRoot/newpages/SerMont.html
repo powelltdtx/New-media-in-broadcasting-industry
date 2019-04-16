@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>播控监控</title>
+		<link rel="stylesheet" href="css/common2.css"/>
+		<link rel="stylesheet" href="css/SerMont.css"/>
+	</head>
+	<body>
+		<div class="box">
+			<div class="left">
+				<div class="date">
+					<span>日</span>
+					<span>月</span>
+				</div>
+				<div class="serData">
+					<div class="serDataTit">预警单数据</div>
+					<div class="serDataList">
+						<span>今日预警数</span>
+						<div class="num">12</div>
+					</div>
+					<div class="serDataList">
+						<span>本月预警数</span>
+						<div class="num" id="mouth">100</div>
+					</div>
+				</div>
+				<div class="Analysis">
+					<div class="AnalysisTit">预警单解析</div>
+					<div class="AnalysisClass">预警类型</div>
+					<div class="chart" id="chart"></div>
+					<div class="line">
+						<img src="img/line.jpg"/>
+					</div>
+					<div class="city" id="city"></div>
+				</div>
+			</div>
+			<div class="middle">
+				<div class="tit2">预警分布</div>
+				<div class="map" id="map">
+					<img src="img/map.png"/>
+				</div>
+				<div class="red_big">
+					<div class="red_small"></div>
+				</div>
+				<div class="green_big">
+					<div class="green_small"></div>
+				</div>
+				<div class="yellow_big">
+					<div class="yellow_small"></div>
+				</div>
+				<div class="lebel">
+					<div class="lebeList">
+						<div class="one1"></div>
+						<div class="two">模板</div>
+					</div>
+					<div class="lebeList">
+						<div class="one2"></div>
+						<div class="two">数据</div>
+					</div>
+					<div class="lebeList">
+						<div class="one3"></div>
+						<div class="two">服务器</div>
+					</div>
+				</div>
+			</div>
+			<div class="dateTime">
+				<div class="date" id="date"></div>
+				<div class="time" id="time"></div>
+			</div>
+			<div class="right">
+				<div class="serverTit">服务器集群</div>
+				<div class="list">
+					<div class="serverListone">
+						<div class="serName">
+							<span>服务器</span>
+							<span>1</span>
+						</div>
+						<div class="one" id="one">
+							<img src="img/ling.png"/>
+						</div>
+					</div>
+					<div class="serverListone">
+						<div class="serName">
+							<span>服务器</span>
+							<span>2</span>
+						</div>
+						<img src="img/red.png"/>
+					</div>
+					<div class="serverListone">
+						<div class="serName">
+							<span>服务器</span>
+							<span>3</span>
+						</div>
+						<img src="img/ling.png"/>
+					</div>
+					<div class="serverListone">
+						<div class="serName">
+							<span>服务器</span>
+							<span>4</span>
+						</div>
+						<img src="img/ling.png"/>
+					</div>
+				</div>
+				<div class="Servermiddle">
+				   <div class="serverListTwo">
+				   	    <div class="serName">
+							<span>服务器</span>
+							<span>5</span>
+						</div>
+				   	    <img src="img/ling.png"/>
+				   </div>
+				   <div class="serverListTwo">
+				   	    <div class="serName">
+							<span>服务器</span>
+							<span>6</span>
+						</div>
+				   	    <img src="img/ling.png"/>
+				   </div>
+				   <div class="serverListTwo">
+				   	    <div class="serName">
+							<span>服务器</span>
+							<span>7</span>
+						</div>
+				   	    <img src="img/green.png"/>
+				   </div>
+				</div>
+				<div class="ServerBottom">
+					<div class="serverListThree">
+						<div class="serName">
+							<span>服务器</span>
+							<span>8</span>
+						</div>
+						<div class="eight">
+							<img src="img/ling.png"/>
+						</div>
+					</div>
+					<div class="serverListThree">
+						<div class="serName">
+							<span>服务器</span>
+							<span>9</span>
+						</div>
+						<img src="img/red.png"/>
+					</div>
+					<div class="serverListThree">
+						<div class="serName">
+							<span>服务器</span>
+							<span>10</span>
+						</div>
+					    <img src="img/ling.png"/>
+					</div>
+					<div class="serverListThree">
+					    <div class="serName">
+							<span>服务器</span>
+							<span>11</span>
+						</div>
+						<img src="img/ling.png"/>
+					</div>
+				</div>
+				<div class="serverLast">
+					<div class="serverListfour">
+						<div class="serName">
+							<span>服务器</span>
+							<span>12</span>
+						</div>
+						<img src="img/ling.png"/>
+					</div>
+					<div class="serverListfour">
+						<div class="serName">
+							<span>服务器</span>
+							<span>13</span>
+						</div>
+						<img src="img/ling.png"/>
+					</div>
+					<div class="serverListfour">
+						<div class="serName">
+							<span>服务器</span>
+							<span>14</span>
+						</div>
+						<img src="img/green.png"/>
+					</div>
+				</div>
+				<div class="rightFoot">
+				     <div class="footTop">
+				     	<div class="winng">
+				     		<span>16</span>
+				     		<span>服务器总数</span>
+				     	</div>
+				     	<div class="winng">
+				     	    <span>2</span>
+				     		<span>告警</span></div>
+				     	<div class="winng">
+				     		<span>3</span>
+				     		<span>故障</span>
+				     	</div>
+				     	<div class="line4">
+				     		<img src="img/line.jpg"/>
+				     	</div>
+				     </div>
+				     <div class="footBottom">
+				     	 <div class="winng">
+				     		<span>正常</span>
+				     	</div>
+				     	<div class="winng">
+				     		<span>存在预警</span>
+				     	</div>
+				     	<div class="winng">
+				     		<span>存在故障</span></div>
+				        </div>
+				     </div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+   <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+   <script src="js/SerMont.js"></script>
+   <script src="js/echarts.min.js"></script>
+   <script type="text/javascript">
+   	var myChart = echarts.init(document.getElementById('chart'));
+   	
+   	var option = {
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['服务器','数据','模板'],
+        textStyle:{    //图例文字的样式
+	        color:'#1d9ff2',
+	        fontSize:12
+       }
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius : '65%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'服务器'},
+                {value:310, name:'数据'},
+                {value:234, name:'模板'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+       // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
+<script>
+	var myChart = echarts.init(document.getElementById('city'));
+	
+	 var option = {
+            tooltip: {},
+            xAxis: {
+                data:['豪州市', '淮北市', '宿州市', '淮南市', '蚌埠市', '合肥市', '滁州志', '六安市', '巢湖市', '宣城市', '芜湖市', '铜陵市', '池州市', '安庆市', '阜阳市', '黄山市', '马鞍山是'],
+                axisLabel:{
+                	interval:0,
+                	rotate:-60,
+                },
+                axisLine:{
+                	lineStyle:{
+                		color:"#FFFFFF",
+                	}
+                }
+            },
+            yAxis: {
+            	splitLine:"none",
+            	nameTextStyle:{
+            		color:["red","green"]
+            	},
+                axisLine:{
+                	lineStyle:{
+                		color:"#FFFFFF",
+                	}
+                }
+            },
+            series: [{
+                name: '数量',
+                type: 'bar',
+                color:"#ffc300",
+                barWidth : 6,
+                data: [5, 20, 36, 10, 10, 20,5, 20, 36, 70, 10, 20,5, 20, 36, 10, 10],
+                 itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [
+                          '#b27cdb','#1fe0e9','#ffc300','#00ff00','#e52f2f',
+                           '#b5b5b5','#b27cdb','#1fe0e9','#ffc300','#00ff00',
+                           '#e52f2f','#b5b5b5','#F4E001','#b27cdb','#1fe0e9',
+                           '#ffc300','#00ff00'
+                           
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            }
+            }]
+        };
+ // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
