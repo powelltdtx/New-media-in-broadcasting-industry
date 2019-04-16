@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>预警监控</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/cpsp.css">
+		<link rel="stylesheet" href="css/layer.css"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<!--头部-->
+			<header class="header">
+				<div class="row clearfix">
+					<div class="col-md-2 logo clearfix">
+						<span class="logoText">播控2.0系统</span>
+						<div class="user col-md-11">
+							<span>admin</span>
+							<span>退出</span>
+						</div>
+					</div>
+					<div class="col-md-10 text-center header_nav clearfix">
+						<div class="col-md-3">
+							<a href="createTemple.html">模板管理</a>
+						</div>
+						<div class="col-md-3">
+							<a href="mangeFile.html">文件管理</a>
+						</div>
+						<div class="col-md-3" id="jkPer" style="border-bottom: 2px solid #FF7A19 !important;">
+							<a href="cpsp.html" style="color: #FF7A19 !important;">预警监控</a>
+						</div>
+						<div class="col-md-3">
+							<a href="sysMange.html">系统管理</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<!--主内容部分-->
+			<main>
+				<!--左侧导航-->
+				<nav class="left_nav navbar-left bg-info">
+					<content class="content">
+						<div class="con">
+							<a class="con_sub headerCur" href="javascript:void(0);"><i></i>服务器监控</a>
+						</div>
+						<div class="con">
+							<a class="con_sub CMSManage" href="javascript:void(0);"><i></i>文件监控</a>
+						</div>
+					</content>
+				</nav>
+				<!--右侧数据(默认)-->
+				<div class="data data_table navbar-left dataDefault">
+					<div class="data-search" style="width: 85%;">
+						<form action="" class="form-inline">
+							<div class="form-group col-md-2">
+								<label for="" class="col-md-4">分组</label>
+								<input type="text" class="col-md-8">
+							</div>
+							<div class="form-group col-md-3 ID">
+								<label for="" class="col-md-4">类别</label>
+								<select name="" class="cate">
+									<option value="">--全部--</option>
+									<option value="">文件服务器</option>
+									<option value="">EPG服务器</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2 ID">
+								<label for="" class="col-md-4">IP</label>
+								<input type="text" class="col-md-8">
+
+							</div>
+							<div class="form-group col-md-2 ID">
+								<label for="" class="col-md-4">名称</label>
+								<input type="text" class="col-md-8">
+
+							</div>
+							<div class="form-group col-md-3 ID">
+								<label for="" class="col-md-4">状态</label>
+								<select name="" class="sels">
+									<option value="">--全部--</option>
+									<option value="">正常</option>
+									<option value="">异常</option>
+									<option value="">关闭</option>
+								</select>
+							</div>
+							<div class="search_btn">
+								
+								 <input type="button" name="" id="que" class="resetBtn" value="查询" />
+								 <input type="button" name="" id="" class="resetBtn" value="添加" />
+								 <input type="button" name="" id="" class="resetBtn" value="重置" />
+								 <input type="button" name="" id="del" class="resetBtn" value="删除" />
+							</div>
+						</form>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover text-center">
+							<thead>
+								<tr>
+									<th><input class="th_checkbox checkBox" type="checkbox"></th>
+									<th width="20"><span class="spanCls">分组</span></th>
+									<th><span class="spanCls">类别</span></th>
+									<th><span class="spanCls">IP</span></th>
+									<th><span class="spanCls">名称</span></th>
+									<th><span class="spanCls">状态</span></th>
+									<th><span class="spanCls">操作</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>济南</span></td>
+									<td><span>文件服务器</span></td>
+									<td><span>192.168.10.1</span></td>
+									<td><span>文件服务器1</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>济南</span></td>
+									<td><span>文件服务器</span></td>
+									<td><span>192.168.10.2</span></td>
+									<td><span>文件服务器2</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr bgcolor="red">
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>济南</span></td>
+									<td><span>EPG服务器</span></td>
+									<td><span>192.168.10.3</span></td>
+									<td><span>EPG服务器1</span></td>
+									<td><span>异常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>济南</span></td>
+									<td><span>EPG服务器</span></td>
+									<td><span>192.168.10.4</span></td>
+									<td><span>EPG服务器2</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>青岛</span></td>
+									<td><span>文件服务器</span></td>
+									<td><span>192.168.10.5</span></td>
+									<td><span>文件服务器3</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr bgcolor="red">
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>青岛</span></td>
+									<td><span>文件服务器</span></td>
+									<td><span>192.168.10.6</span></td>
+									<td><span>文件服务器4</span></td>
+									<td><span>已关闭</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>青岛</span></td>
+									<td><span>EPG服务器</span></td>
+									<td><span>192.168.10.7</span></td>
+									<td><span>EPG服务器3</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<input class="tbody_checkbox checkBox" name="templetVO.ids" type="checkbox">
+									</td>
+									<td><span>青岛</span></td>
+									<td><span>EPG服务器</span></td>
+									<td><span>192.168.10.8</span></td>
+									<td><span>EPG服务器4</span></td>
+									<td><span>正常</span></td>
+									<td>
+										<select name="" class="oper" id="selected">
+											<option value="">操作</option>
+											<option value="">开启</option>
+											<option value="">关闭</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="page center-block">
+							<ul>
+								<li>
+									<button type="button" class="">首页</button>
+									<button type="button" class="">上一页</button>
+									<button type="button" class="">下一页</button>
+									<button type="button" class="">尾页</button>
+									<span>每页显示
+                                    <select name="" id="">
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                                                                                            条</span> 跳转到
+									<input type="text" size="2" />页
+									<span>1/1</span>
+									<button type="button" class="pageBtn">跳转</button>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				<div class="layer confirm" id="confirm" style="display: none">
+						<div class="layer-tit"></div>
+						<div class="layer-msg">正在进行删除操作 ，是否确认删除？</div>
+						<div class="buttons">
+							<input type="button" class="btn blue-btn" value="确认"onclick="goSub()" /> 
+							<input type="button" class="btn blue-btn cancel" value="取消" />
+						</div>
+			    </div>
+			    <div class="layer confirm" id="close" style="display: none">
+						<div class="layer-tit"></div>
+						<div class="layer-msg">正在进行关闭操作 ，是否确认关闭？</div>
+						<div class="buttons">
+							<input type="button" class="btn blue-btn" value="确认"onclick="goSub()" /> 
+							<input type="button" class="btn blue-btn cancel" value="取消" />
+						</div>
+			    </div>
+			</main>
+		</div>
+		<script src="js/jquery-3.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/layer.js"></script>
+	</body>
+
+</html>
+<script>
+/**删除*/
+$("#del").on('click', function() {
+	var strIds = new Array();
+	$("input[name='templetVO.ids']:checked").each(function() {
+		strIds[strIds.length] = $(this).val()
+	});
+
+	if (strIds.length == 0) {
+		alert("请选择需要操作的对象模板!!");
+		//layer.msg("请选择需要操作的对象",2,3);
+		return false;
+	} else {
+		$.layer({
+			type : 1, //0-4的选择,
+			shade : [ 0.6, '#000', true ],
+			title : false,
+			border : [ 0 ],
+			closeBtn : [ 0 ],
+			shadeClose : true,
+			area : [ '450px', '280px' ],
+			page : {
+				dom : "#confirm"
+			}
+		});
+	}
+});
+//关闭
+//关闭操作
+$("#selected").on("change",function(){
+	    if($("option:selected",this).text()=='关闭'){
+	       $.layer({
+				type : 1, //0-4的选择,
+				shade : [ 0.6, '#000', true ],
+				title : false,
+				border : [ 0 ],
+				closeBtn : [ 0 ],
+				shadeClose : true,
+				area : [ '450px', '280px' ],
+				page : {
+					dom : "#close"
+				}
+			});
+	     }
+});
+$('.cancel').on('click', function() {
+	layer.closeAll();
+});
+</script>
