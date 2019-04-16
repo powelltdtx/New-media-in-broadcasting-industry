@@ -1,0 +1,301 @@
+@charset "UTF-8";
+.data-search_SY label,.data-search_SY input,.data-search_SY select{
+    /*z-index: 10!important;*/
+}
+.table{
+    border-right: 1px solid #ccc;
+}
+/*.table:nth-child(3){*/
+    /*border-right: none;*/
+/*}*/
+.table thead tr th{
+    text-align: center;
+}
+.transcodeSetting{
+    width:25%!important;
+}
+.transcodeSetting input{
+    width: 20px;
+}
+.rateControl{
+    position: relative;
+}
+.rateControl label{
+    width:17.5%;
+    float: left;
+}
+.rateControl .table{
+    width:65.5%;
+}
+.fa-times-circle-o{
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+.rateControl .btn{
+    width:10%;
+    position: absolute;
+    right:60px;
+    top:6px;
+}
+
+/*dataDefault*/
+.dataDefault .table-responsive{
+    height: 561px;
+    overflow-y: auto;
+}
+/*dataSY*/
+.dataSY{
+    position: absolute;
+    right:0;
+    bottom: 0;
+}
+.data-search_SY{
+    width:95%!important;
+}
+.data-search_SY select,.data-search_SY .col-md-4>input{
+    width: 230px;
+}
+
+/*dataSY_edit*/
+.dataSY_edit{
+    width:100%;
+    /*position: absolute;*/
+    /*top:250px;*/
+    position: relative;
+    top:0;
+}
+/*tab*/
+.tab{
+    /*position: relative;*/
+}
+.tab>div{
+    /*position: absolute;*/
+}
+.tab_left{
+
+}
+.tab_mid{
+    /*left:20%;*/
+}
+.tab_right{
+    /*left:40%;*/
+}
+
+/*malvSec*/
+.malvSec{
+    width: 230px;
+    position: absolute;
+    left: 122px;
+    top: 24px;
+    z-index:999;
+    opacity: 1;
+    background: #FFFFFF;
+    display: none;
+    /*padding: 50px;*/
+    /*padding-top: 0;*/
+    border: 1px solid #098FFF;
+    border-top: 1px solid transparent;
+}
+.malvSec li:hover{
+    background: #098FFF;
+}
+.malvSec li span{
+    display: block;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+.malvSec ul li a{
+    text-align: left;
+}
+.cpspBtn{
+    width:100%;
+    /*padding-top: 15px;*/
+}
+.cpspBtn .btn{
+    width: 110px;
+}
+
+.tabx_1 > tr{
+    height: 41px;
+}
+.tabx_1 > tr > td >input{
+    width: 100px;
+}
+
+.previewDel{
+    cursor: pointer;
+}
+/*下游管理 添加 编辑*/
+#addModal .modal-body label,#EditModal .modal-body label{
+    display: block;
+    width:100%;
+    text-align: center;
+}
+#addModal .modal-body label span,#EditModal .modal-body label span{
+    width:100px;
+    display: inline-block;
+    text-align: right;
+}
+
+/*自动下发下游及正式转码码率*/
+#GDFreeTrial + div>ul,#malv + div>ul{
+    width: 230px;
+}
+#GDFreeTrial + div>button,#malv + div>button{
+    width: 230px;
+    height:25px;
+}
+/*自动下发下游和正式转码码率 超出隐藏*/
+.multiselect-native-select button{
+    margin-right: 0;
+}
+.GDFreeTrial button,.malv button{
+    padding:0 5px;
+}
+.GDFreeTrial button span,.malv button span{
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+.state{
+	margin-left:40px;
+	margin-top: 10px;
+}
+.state select{
+	text-align: center;
+	width: 148px;
+	height: 25px;
+}
+.spanCls{
+	width: 30px;
+}
+.oper{
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	padding-left: 32px;
+}
+
+/*.sel{*/
+	/*width: 109px;*/
+	/*height: 28px;*/
+	/*padding-left: 10px;*/
+	/*margin-left: 10px;*/
+/*}*/
+/*.ipt {*/
+	/*width: 144px;*/
+	/*height: 28px;*/
+	/*padding-left: 10px;*/
+	/*!* margin-left: 10px; *!*/
+/*}*/
+.iptTime{
+		width: 164px;
+		padding-left: 10px;
+}
+/*.ipt3 {*/
+	/*width: 164px;*/
+	/*height: 28px;*/
+	/*padding-left: 10px;*/
+	/*!* margin-left: 10px; *!*/
+/*}*/
+
+/*.ipt2 {*/
+	/*width: 165px;*/
+/*}*/
+.cate{
+	width: 109px;
+	height: 25px;
+}
+#que{
+	margin-right: 9px;
+	/*margin-top: 20px;*/
+}
+.time{
+	font-weight: 400;
+}
+.choseNav{
+	color: #FF7A19;
+	border-bottom: 4px solid #FF7A19;
+}
+.header_nav a{
+	color: #333;
+}
+.data-search{
+	text-align: center;
+}
+#newTemp{
+	background-color: #FFFFFF;
+	border: 1px solid #C6C6C6;
+}
+#laydate_box{
+	border: 1px solid #C6C6C6;
+}
+#laydate_time{
+	background: #C4E3F3;
+	border: 1px solid #CCCCCC;
+}
+#laydate_ms{
+	border: 1px solid #00F7DE;
+	background-color: #f3efef;
+}
+#laydate_ms span{
+	/*border: 1px solid #00F7DE;*/
+}
+#laydate_hms{
+	border: 1px solid #C6C6C6;
+}
+.laydate_body .laydate_choose{
+	border: 1px solid #CCCCCC;
+}
+
+#laydate_ys{
+	background: #f3efef;
+}
+.laydte_hsmtex{
+	border: 1px solid #FFFFFF;
+}
+#laydate_table{
+	border: 1px solid #CCCCCC;
+}
+#laydate_table thead tr:nth-child(1){
+	background: #C4E3F3;
+	border-bottom:1px solid #CCCCCC ;
+}
+.laydte_hsmtex span{
+	color: #FF7A19;
+}
+.laydate_body .laydate_table{
+	height: 160px;
+	border: 1px solid #CCCCCC;
+}
+#laydate_today,#laydate_ok{
+	border: 1px solid #CCCCCC;
+}
+#laydate_ok{
+	border-left: none;
+}
+/*重置按钮*/
+.resetBtn{
+	width: 100px;
+    height: 26px;
+    border: 1px solid #cccc;
+    border-radius: 3px;
+    color: #333;
+    background-color: #fff;
+    margin-right: 30px;
+}
+#fileRoot {
+	width: 20px;
+	overflow: hidden;
+}
+.resetBtt{
+	
+}
+.search_btn{
+	/*position: relative;
+	left: -232px;*/
+	text-align: center;
+}
