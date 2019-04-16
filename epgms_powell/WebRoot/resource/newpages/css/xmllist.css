@@ -1,0 +1,88 @@
+/*dataGD*/
+.dataGD{
+    /*display: none;*/
+    /*position: absolute;*/
+    /*right:0;*/
+    /*bottom: -10px;*/
+    position: relative;
+    top:0;
+}
+.dataGD form{
+    overflow-y: visible;
+}
+.dataGD .table-responsive{
+    width:100%;
+    height: 524px; /*cheng*/
+    overflow-y: auto;
+}
+.data-search_GD{
+    width:95%!important;
+}
+.data-search_GD select {
+    /*width: 227px;*/
+    width: 235px;
+}
+
+.receiveTime{
+    /*width: 102px;*/
+    width: 106px;
+}
+
+.receiveIcon{
+    position: absolute;
+    top: 5px!important;
+}
+.receiveIconFrom{
+    /*left:202px!important;*/
+    left:208px!important;
+}
+.receiveIconTo{
+    /*left:325px!important;*/
+    left:336px!important;
+}
+
+.GDTable th{
+    text-align: center;
+}
+.table.GDTable tr td{
+    padding:7px 8px;
+}
+/*.GDTable th:nth-child(1){*/
+/*width:2%;*/
+/*}*/
+
+.btn .caret{
+    position: relative;
+    left: 5px;
+}
+
+/*data表格*/
+.table tr th{
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+.table tr th:nth-child(2),.table tr th:nth-child(5){
+    max-width: 280px;
+}
+.table tr th:nth-child(3),.table tr th:nth-child(4),.table tr th:nth-child(7),.table tr th:nth-child(8){
+    min-width: 72px;
+}
+.table tr th:nth-child(6){
+    max-width: 86px;
+}
+
+
+
+/*查询浮层*/
+.floatLayer{
+    position: absolute;
+    right:0;
+    bottom:0;
+    /*background: #000000;*/
+    /*opacity: .3;*/
+    /*display: none;*/
+}
+.modal-dialog{
+    width:1250px;
+    height: 600px;
+}
