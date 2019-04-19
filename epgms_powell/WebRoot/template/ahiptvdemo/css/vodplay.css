@@ -1,0 +1,279 @@
+/*点播播放页*/
+.box{
+	width: 1280px;
+	height: 720px;
+}
+.operation{
+	width: 1278px;
+	height: 180px;
+	position: absolute;
+	top: 537px;
+	left: 0px;
+    background: url(../img/vodplay/player_mengban.png) no-repeat;
+    visibility:hidden;
+}
+.operation .point{
+	position: absolute;
+    top: 3px;
+	width: 14px;
+	height: 14px;
+	background-color: #ffffff;
+	border-radius: 50%;
+}
+.operation .title1{
+	position: absolute;
+	top: -9px;
+	left:20px;
+}
+.operation .title1 span{
+	margin-left: 5px;
+	font-size: 17px;
+	color: #FFFFFF;
+}
+.operation .seriesNum{
+	position: absolute;
+	top: 35px;
+	left: 20px;
+}
+.operation .seriesNum .seriesList{
+	display: inline-block;
+	text-align: center;
+	line-height: 64px;
+	width: 64px;
+	height: 64px;
+	background-color:#38383C;
+	opacity: 0.5;
+	margin-left: 10px;
+}
+.operation .seriesNum .seriesList span{
+	font-size: 24px;
+	color: #FFFFFF;
+}
+.operation .seriesNum .seriesSel{
+	background-color: #E03C32;
+	opacity: 1;
+}
+.operation .sets{
+	position: absolute;
+	top:115px;
+	left: 5px;
+}
+.operation .sets span{
+	font-size: 24px;
+	display: inline-block;
+	text-align: center;
+	line-height: 40px;
+	width:126px;
+	height:40px;
+	margin-left: 25px;
+	background-color:#38383C;
+	opacity: 0.7;
+	
+}
+.operation .setSel{
+	color: #E03C32;
+	opacity: 1;
+}
+/*音量*/
+.voice{
+	position:absolute;
+	left: 1150px;
+	top: 70px;
+	visibility:hidden;
+}
+.voice .title3{
+	position: absolute;
+    top: 170px;
+    left: -42px;
+}
+.voice .title3 span{
+	color:#FF7928 ;
+	font-size: 14px;
+}
+.voice .voiceBar1{
+	position: relative;
+	width: 1px;
+	height: 400px;
+	background-color: #1A120E;
+}
+.voiceBar1 .voiceBar2{
+	position: absolute;
+	left: 0px;
+	bottom: 0;
+	width: 1px;
+	height: 200px;
+	background-color: #FF7928;
+}
+.voice .voicePic{
+	left: -8px;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 420px;
+	background: url(../img/vodplay/player_icon_volume.png) no-repeat;
+}
+/*断点续播*/
+.playBack{
+	background: url(../img/vodplay/player_mengban.png) no-repeat;
+	width: 1278px;
+	height: 180px;
+	position: absolute;
+	top:539px;
+	left: 0px;
+	visibility:hidden;
+    /*display: none;*/
+}
+.playBack .title2{
+	text-align: center;
+	line-height: 50px;
+	position: absolute;
+	top: 0;
+	left: 400px;
+	width: 422px;
+	height: 50px;
+	border: 2px solid #ff7928;
+	background-color:#1a120e;
+	border-radius: 25px;
+	opacity: 0.8;
+	visibility:hidden;
+}
+.playBack .title2 span{
+	font-size: 24px;
+	color: #AFAEAE;
+}
+.playBack .progressBar1{
+	position: relative;
+	top: 100px;
+	left: 100px;
+	height: 1px;
+	width:1000px;
+	background-color: #AFAEAE;
+}
+.playBack .progressBar2{
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	height: 1px;
+	width:550px;
+	background-color:#FF7928;
+}
+.playBack .tishi{
+	text-align: center;
+	line-height: 24px;
+	width: 82px;
+	height: 24px;
+	border-radius: 15px;
+	position: absolute;
+	top: 60px;
+    left: 280px;
+	background-color:#ff7928;
+	padding-bottom: 7px;
+}
+.playBack .playPic{
+	width: 20px;
+	height: 26px;
+	position: absolute;
+	top: 88px;
+	left: 50px;
+	background: url(../img/vodplay/player_icon_playing.png) no-repeat;
+}
+.playBack .suspended{
+	width: 20px;
+	height: 26px;
+	position: absolute;
+	top: 88px;
+	left: 50px;
+	background: url(../img/vodplay/player_icon_pause.png) no-repeat;
+	display: none;
+}
+.playBack .tishi span,.tishi2 span{
+	font-size: 18px;
+}
+.playBack .playTime{
+	position: absolute;
+	top: 79px;
+	left: 1124px;
+}
+.playBack .playTime span{
+	font-size: 14px;
+}
+.playBack .tishi2{
+	position: absolute;
+	top: 108px;
+	left: 98px;
+}
+.zhezhao{
+	visibility:hidden;
+}
+.mask {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1280px;
+	height: 720px;
+	background: #000;
+	opacity: 0.7;
+}
+.zhezhao .maskPic{
+	position:absolute;
+	top:30%;
+	left:40%;
+	z-index: 9999;
+}
+.exit{
+	display: none;
+}
+.exit .inform{
+	width:580px;
+	height: 340px;
+	border-radius: 20px;
+	background-color:#ec8461;
+	position:absolute;
+	top:30%;
+	left:30%;
+	z-index: 9999;
+}
+.exit .inform .inforHeader{
+	background: url(../img/vodplay/popup_icon_prompt.png) no-repeat 15px 5px;
+	width:580px;
+	height:60px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 30px;
+	background-color:#e25b2f;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+.inforMain .word{
+	font-size: 24px;
+	padding-left: 25px;
+	padding-top: 25px;
+}
+.inforMain .advertising{
+	margin-left: 25px;
+	margin-top: 25px;
+}
+.inforMain .advertising img:nth-child(2){
+	margin-top: 45px;
+	margin-left: 38px;
+}
+.inforMain .button{
+	/*text-align: center;*/
+	margin-top: 80px;
+	margin-left: 38px;
+}
+.inforMain .button .determine,.cancel{
+	font-size: 24px;
+	display: inline-block;
+	text-align: center;
+	line-height: 45px;
+	background-color: #353637;
+	width: 148px;
+	height: 45px;
+	border-radius:30px;
+	margin-left: 50px;
+}
+.inforMain .button .buttonSel{
+	background-color: #f05241;
+}
+
