@@ -1,0 +1,202 @@
+@charset "UTF-8";
+*{
+    margin:0;
+    padding:0;
+}
+ul,ol,li{
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+.fleft{
+    float: left;
+}
+body{
+    width: 1280px;
+    height: 720px;
+    background: url("../img/huigood/hui_good_bg.png") no-repeat;
+}
+/*img{*/
+    /*border:4px solid transparent;*/
+/*}*/
+.main{
+    position: relative;
+    left: 20px;
+    top: 100px;
+    width: 1260px;
+}
+.left_nav{
+    width: 170px;
+    float: left;
+    padding-top: 20px;
+    background: url("../img/huigood/huigood/huiGood_leftNav_bg.png");
+}
+.left_nav ul li:nth-child(1){
+    margin-bottom: 9px;
+}
+.left_nav ul li:nth-child(2){
+    margin-bottom: 20px;
+}
+.left_nav ul li:last-child{
+    margin-bottom: 10px;
+}
+.left_nav ul li{
+    margin-bottom: 26px;
+    text-align: center;
+}
+.content{
+    float: left;
+    width: 1080px;
+    position: relative;
+    left: 10px;
+    top:-4px;
+}
+.content li{
+    border:4px solid transparent;
+}
+.content img{
+    display: block;
+}
+.content li span{
+    position: absolute;
+    z-index: 1000;
+    width:100%;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    /*background-size: 100%;*/
+    font-size: 20px;
+}
+.con_l,.con_mid,.con_r{
+    float: left;
+    /*position: relative;*/
+}
+.con_1{
+    width: 267px;
+}
+.con_1 li{
+    position: relative;
+}
+.con_l li:nth-child(1){
+    position: relative;
+}
+.con_l li:nth-child(2){
+    position: relative;
+    top:-2px;
+}
+.con_l li:nth-child(1) span{
+    /*background: url("../img/huigood/huiGood_lcover.png") no-repeat;*/
+    /*background-size: 100%;*/
+    bottom:0;
+    left:0;
+    background: url("../img/huigood/huiGood_lcover.png") no-repeat;
+}
+.con_l li:nth-child(2) span{
+    bottom:0;
+    left:0;
+    background: url("../img/huigood/huiGood_lcover.png") no-repeat;
+}
+.con_mid{
+    position: relative;
+    left: 2px;
+}
+.con_mid li:nth-child(1) span{
+    bottom:222px;
+    left:4px;
+    background: url("../img/huigood/huiGood_midcover.png") no-repeat;
+}
+.con_mid li:nth-child(1).huiGood_sel span{
+    bottom:-4px;
+    left:0;
+}
+.con_mid li:nth-child(2) span{
+    bottom: -1px;
+    left:0px;
+    background: url("../img/huigood/huiGood_midcover2.png") no-repeat;
+}
+.con_mid li:nth-child(3) span{
+    bottom:-1px;
+    left:0px;
+    background: url("../img/huigood/huiGood_midcover3.png") no-repeat;
+}
+.con_mid li:nth-child(2){
+    position: relative;
+    top:0px;
+}
+.con_mid li:nth-child(3){
+    position: relative;
+    top:0px;
+    left:2px;
+}
+.con_r{
+    position: relative;
+    left: 8px;
+}
+.con_r li:nth-child(2){
+    position: relative;
+    top: -2px;
+}
+.con_r li:nth-child(3){
+    position: relative;
+    top: -2px;
+}
+.con_r li:nth-child(1) span{
+    bottom:339px;
+    left:4px;
+    background: url("../img/huigood/huiGood_rcover.png") no-repeat;
+}
+.con_r li:nth-child(1).huiGood_sel span{
+    bottom:0;
+    left:0;
+}
+.con_r li:nth-child(2) span{
+     bottom:0;
+     left:0;
+     background: url("../img/huigood/huiGood_rcover.png") no-repeat;
+}
+.con_r li:nth-child(3) span{
+    bottom:0;
+    left:0;
+    background: url("../img/huigood/huiGood_rcover.png") no-repeat;
+}
+.bottom_nav{
+    position: relative;
+    top:14px;
+    left:10px;
+    width: 1250px;
+}
+.bottom_nav ul{
+    padding-left: 114px;
+}
+.bottom_nav ul li{
+    width: 168px;
+    height: 67px;
+    text-align: center;
+    display: inline-block;
+}
+.bottom_nav ul li img{
+    margin-top: 4px;
+    margin-left: -15px;
+}
+.bottom_nav ul li:nth-child(6){
+    position: relative;
+    top: -4px;
+}
+.bottom_nav ul li:nth-child(6) img{
+    position: relative;
+    top: 4px;
+}
+.bottom_nav ul li:nth-child(7){
+    position: relative;
+    top: 8px;
+    display: none;
+}
+.huiGood_leftNav_sel{transform:scale(1.25); -webkit-transform:scale(1.25); z-index: 999;}
+.huiGood_sel {border:4px solid #00E5FF!important; box-shadow:0px 0px 10px #00E5FF; border-radius:10px; transform:scale(1.18); -webkit-transform:scale(1.18); z-index: 1010;position: relative}
+.bottom_nav_sel{
+    background: url("../img/huigood/huiGood_nav_sel.png") no-repeat 27px 3px;}
