@@ -1,0 +1,52 @@
+.box{
+	width: 1280px;
+	height: 720px;
+	background-color: #212126;
+}
+.actorName{
+	position: absolute;
+	left: 160px;
+	top: 60px;
+	width: 970px;
+	text-align: center;
+	font-size: 30px;
+	color: #FFFFFF;
+}
+.movie{
+	position: relative;
+}
+.movieName{
+	line-height: 34px;
+	text-align: center;
+	color: #CCCCCC;
+	font-size: 18px;
+	position:absolute;
+	top: 222px;
+	width: 172px;
+	height: 34px;
+	background-color: #4d4d51;
+}
+.movieList{
+	position: absolute;
+	top: 118px;
+	left: 144px;
+	width: 1014px;
+	height: 540px;
+}
+.movieList ul li{
+	border:3px solid transparent;
+	display: inline-block;
+	margin-left: 16px;
+	margin-top: 16px;
+}
+/*焦点样式*/
+.movieSel{
+	border:3px solid #ff6633 !important;
+	transform: scale(1.08);
+	-webkit-transform: scale(1.08);
+	z-index: 1010;
+}
+/*.movieNameSel{
+	color: #FFFFFF;
+	background-color: #ff6633;
+}*/
