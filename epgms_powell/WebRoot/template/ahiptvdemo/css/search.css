@@ -1,0 +1,207 @@
+/*搜索页*/
+.box{
+	width: 1280px;
+	height: 720px;
+	background-color: #212126;
+}
+.left{
+	position: relative;
+	width: 400px;
+	height: 720px;
+	background-color:#1a1a1e;
+}
+.search{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 300px;
+	height: 50px;
+	background: url(../img/search/a2_icon_search.png) no-repeat 10px 10px;
+	background-size: 25px 25px;	
+	border-bottom:1px solid #38383c;
+	padding-left: 50px;
+	line-height: 50px;
+}
+.keyBords{
+	position: absolute;
+	top: 90px;
+	left: 20px;
+}
+.keyBords .keyBord{
+	color: #dddddd;
+	font-size: 40px;
+	text-align: center;
+	line-height: 68px;
+	width:68px;
+	height: 68px;
+	display: inline-block;
+	margin-left:0px;
+}
+.keyBords .keyBordSel{
+	color: #ffff;
+	background-color: #E74639;
+}
+.KeyboardSwitch{
+	position: absolute;
+	top: 530px;
+	left: 20px;
+}
+.KeyboardSwitch .all{
+	background:url(../img/search/search_icon_selected.png) no-repeat 18px 13px;
+}
+.KeyboardSwitch .all,.nine{
+	font-size: 22px;
+	margin-left:10px;
+	text-align: center;
+	line-height: 45px;
+	width: 158px;
+	height: 45px;
+	display: inline-block;
+	background-color:#48484b;
+	color: #dddddd;
+}
+.KeyboardSwitch .keyBordSel{
+	color: #ffff;
+	background-color: #E74639;
+}
+.note{
+	position: absolute;
+	top: 605px;
+	left: 20px;
+}
+.right{
+	position: absolute;
+	top: 20px;
+	left: 434px;
+}
+.jieguo1{
+	/*display: none;*/
+}
+.title1{
+	font-size: 26px;
+	color: #dddddd;
+	width: 800px;
+	height: 50px;
+	border-bottom:1px solid #38383c;
+}
+.hotSearch{
+	position: absolute;
+	top: 80px;
+	left: 0px;
+}
+.hotSearch .searchPic{
+	
+}
+.hotSearch .searchPic .picList{
+	border: 3px solid transparent;
+	margin-left: 12px;
+	width: 174px;
+	height: 254px;
+	display: inline-block;
+}
+.hotSearch .searchPic .picList .picListName{
+	font-size: 18px;
+	color: #DDDDDD;
+	text-align: center;
+	line-height: 35px;
+	width: 174px;
+	height: 35px;
+	position: absolute;
+	top: 222px;
+	background-color:#4D4D51;
+	overflow-x: hidden;
+}
+.hotSearch .searchPic .picListSel{
+	/*border: 3px solid #E03C32 !important;*/
+	background-color:#E03C32 !important;
+}
+.hotSearch .searchPic .picList .picListNameSel{
+	color: #FFFFFF;
+	background: #E03C32 !important;
+}
+.searchList .resultSel{
+	background-color: #E03C32 !important;
+	color: #FFFFFF !important;
+}
+.searchList .result{
+	padding-left: 10px;
+	font-size: 20px;
+	color: #AFAEAE;
+	margin-top: 20px;
+	margin-left: 14px;
+	display: inline-block;
+	width: 358px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #4D4D51;
+}
+.jieguo2{
+	position: absolute;
+	top: -10px;
+	display: none;
+}
+.nav-penl{
+	width: 800px;
+	height: 62px;
+	margin-left: 115px;
+}
+.title2{
+	color: #DDDDDD;
+	font-size: 26px;
+	position: absolute;
+	top: 20px;
+}
+.line2{
+	position: absolute;
+	top: 61px;
+	left: -7px;
+	width: 800px;
+	height: 2px;
+	background-color: #38383C;
+}
+.nav-penl .nav{
+	text-align: center;
+	color: #DDDDDD;
+	font-size: 22px;
+	width: 80px;
+	height: 59px;
+	line-height: 59px;
+	margin-left: 40px;
+	display: inline-block;
+}
+.nav-penl .navSel{
+	color: #E03C32;
+	border-bottom: 2px solid #E03C32;
+}
+.result2{
+	position: absolute;
+	
+}
+.result2 .resultList{
+	position: relative;
+	margin-top: 20px;
+	margin-left: 10px;
+	width:174px;
+	height: 254px;
+	display: inline-block;
+	border: 3px solid transparent;
+}
+.result2 .resultList .resultListName{
+	font-size: 18px;
+	color: #DDDDDD;
+	text-align: center;
+	line-height: 35px;
+	width: 174px;
+	height: 35px;
+	position: absolute;
+	top: 219px;
+	background-color: #4D4D51;
+	overflow-x: hidden;
+}
+.result2 .resultListSel{
+	border: 3px solid #E03C32;
+}
+.result2 .resultList .resultListNameSel{
+	color: #FFFFFF;
+	background-color:#E03C32;
+}
