@@ -1,0 +1,91 @@
+.leftBar { position:absolute; height: 720px;}
+#chooseBar { position:relative; height:560px; left:40px; top:160px;  width:152px;}
+#chooseBar li { font-size: 28px; width: 115px; height: 48px; line-height: 48px; text-align: center; margin-bottom: 20px;}
+#chooseBar li:nth-child(1){position: absolute; top:0;}
+#chooseBar li:nth-child(2){position: absolute; top:66px;}
+#chooseBar li:nth-child(3){position: absolute; top:133px;}
+#chooseBar li:nth-child(4){position: absolute; top:199px;}
+#chooseBar li:nth-child(5){position: absolute; top:266px;}
+#chooseBar li:nth-child(6){position: absolute; top:332px;}
+#chooseBar li:nth-child(7){position: absolute; top:398px;}
+#chooseBar li:nth-child(8){position: absolute; top:465px;}
+#chooseBar ul { position:absolute;  display:block; width: 130px; padding:8px 0 0 12px; left:5px; top: 10px;}
+#moveList { overflow:hidden; height:720px; position:relative;}
+.moveListRow { position:absolute;}
+.moveListRow:nth-of-type(1) { position:absolute; top:303px; left:260px;}
+.moveListRow:nth-of-type(2) { position:absolute; top:598px; left:260px;}
+.moveListRow li {display:inline-block; margin-right:10px;  margin-top:10px; border:solid 4px transparent;; position:relative;}
+.moveListRow li img { display:inline-block; vertical-align:middle;}
+.moveListRow li p { text-align:center; background:url(../img/movielist/mask_1.png) repeat-x;background-size: 175px 80px; height:105px; color:#d0f8ff; position:absolute; top:178px; width:155px; padding:0 10px; font-size:25px; color:#fff; line-height:175px;}
+.moveListRow li p span {overflow: hidden;white-space: nowrap;text-overflow: clip;width: 160px;margin-top: -30px}
+.moveListRow li p span:nth-of-type(1) { float:left;}
+.moveListRow li p span:nth-of-type(2) { float:right; color:#ffdc18;}
+#upA { position:absolute; left:88px; top:124px;}
+#downA { position:absolute; left:88px; top:935px;}
+.choose-sel { margin-left:-2px; margin-top:-2px; color:#65c7ff;border:4px solid #00E5FF; box-shadow:0px 0px 10px #00E5FF; border-radius:10px; transform:scale(1.15); -webkit-transform:scale(1.15); z-index: 99}
+.choose-nosel{color:#65c7ff;}
+.recListLi {border:solid 4px transparent;}
+.moveListRow .moiveList-sel , .recommonList .moiveList-sel { border-color:#00ffff;}
+.moveNum { position:absolute; left:0px; top:-40px; color:#fff; font-size:22px;}
+.moveNum2 { position:absolute; left:0px; top:180px; color:#fff; font-size:22px;}
+.moveNum span { color:#00ffff;}
+.recommonList { position:absolute; left:257px; top:94px; display:none;}
+.recommonList li { display:inline-block; margin-right:20px;  border:solid 4px transparent; height:163px;}
+.rightbar { position:relative; overflow: hidden; height: 720px;}
+.start { position:absolute; left:208px; top:135px;}
+.fun { position:absolute; width:110px; height:34px; line-height:34px; border-radius:20px; background:#383a3f; font-size:27px; left:60px; top:111px; text-align:center}
+.fun-sel { background:#2fb3ff; color:#fff;}
+
+.shelter{
+    width: 1280px;
+    height: 720px;
+    background: rgba(102,102,102,0.6);
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 900;
+}
+.shelter1{
+    display: none;
+}
+.shelter2{
+    display: none;
+}
+.sh_alert{
+    width:548px;
+    height: 324px;
+    margin:0 auto;
+    position: relative;
+    top: 198px;
+    z-index: 901;
+    background: url("../images/shelter_alert.png") no-repeat;
+}
+.sh_alert p{
+    text-align: center;
+    font-size: 38px;
+    height: 60px;
+    line-height: 60px;
+    width: 360px;
+    margin:0 auto;
+    padding-top: 60px;
+}
+.sh_alert button{
+    width: 142px;
+    height: 50px;
+    border:0;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 28px;
+    margin-top: 115px;
+}
+.sh_alert button.btn_enter{
+    background: #3475a5;
+    margin-left: 102px;
+}
+.sh_alert button.btn_cancer{
+    background: #3475a5;
+    margin-left: 50px;
+}
+.btn_sel{
+    background: #00ace5!important;
+}
