@@ -1,0 +1,209 @@
+@charset "UTF-8";
+*{
+    margin:0;
+    padding:0;
+}
+ul,ol,li{
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+.fleft{
+    float: left;
+}
+body{
+    width: 1280px;
+    height: 720px;
+    background: url("../img/huigood/hui_good_sub_bg.png") no-repeat;
+}
+/*img{*/
+    /*border:4px solid transparent;*/
+/*}*/
+.main{
+    position: relative;
+    left: 56px;
+    top: 100px;
+    width:1224px;
+}
+.sub_l,.sub_mid,.sub_r{
+    float: left;
+    position: relative;
+}
+.sub_l li,.sub_mid li,.sub_r li{
+    border:4px solid transparent;
+    position: relative;
+}
+.sub_l li img,.sub_mid li img,.sub_r li img{
+    display: block;
+    border-radius: 12px;
+}
+.sub_l li:nth-child(2){
+    top:5px;
+}
+.sub_mid{
+    left:7px;
+}
+.sub_mid li:nth-child(1).huiGood_sel{
+    -webkit-transform: scale(1)!important;
+}
+.sub_mid li:nth-child(3){
+    left:8px;
+}
+.sub_r{
+    left:15px;
+}
+.sub_l span,.sub_mid span,.sub_r span{
+    position: absolute;
+    z-index: 1000;
+    width:100%;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    /*background-size: 100%;*/
+    font-size: 20px;
+}
+.sub_l span{
+    background: url("../img/huigood/huiGood_sub_lcover.png") no-repeat;
+    background-position: bottom;
+}
+.sub_l li:nth-child(1) span{
+    bottom: 2px;
+    left:0;
+}
+.sub_l li:nth-child(2) span{
+    bottom:-1px;
+    left:0;
+}
+.sub_mid span{
+    background: url("../img/huigood/huiGood_sub_midcover.png") no-repeat;
+    background-position: bottom;
+}
+.sub_r span{
+    background: url("../img/huigood/huiGood_sub_midcover.png");
+    background-position: bottom;
+    background-size: 100%;
+}
+.sub_mid li:nth-child(2) span {
+    bottom: 0;
+    left: 0;
+}
+.sub_mid li:nth-child(3) span{
+    bottom:0;
+    left:-1px;
+}
+.sub_r li:nth-child(2) span{
+    bottom:-1px;
+    left:1px;
+}
+.sub_r_slideInfo{
+    position: absolute;
+    top:0;
+    left:0;
+}
+.sub_r_slideInfo li{
+    width: 275px;
+    height: 29px;
+    line-height: 29px;
+    border:4px solid transparent;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    /*position: absolute;*/
+}
+.sub_r_slideInfo li i{
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    /*background: #000;*/
+    font-style: normal;
+    margin-left: 15px;
+    position: relative;
+    top:-2px;
+}
+.sub_r_slideInfo li em{
+    /*color: #000;*/
+    /*text-decoration: none;*/
+    font-style: normal;
+    padding-left: 12px;
+    font-size: 19px;
+}
+.sub_r_slideInfo li:nth-child(odd) i{
+    background: #fff;
+}
+.sub_r_slideInfo li:nth-child(odd) em{
+    color: #fff;
+}
+.sub_r_slideInfo li:nth-child(even) i{
+    background: #000;
+}
+.sub_r_slideInfo li:nth-child(even) em{
+    color: #000;
+}
+.sub_r_slideInfo ul li.huiGood_sub_info_sel i{
+    top:-8px;
+}
+.sub_r > ul > li:nth-child(2){
+    top:6px;
+}
+.sub_r_slide img:nth-child(1){
+    position: absolute;
+    right:-19px;
+    top:12px;
+}
+.sub_r_slide img:nth-child(2){
+    position: absolute;
+    right:-26px;
+    top:5px;
+}
+.bottom_nav{
+    position: relative;
+    top:19px;
+    left:-26px;
+}
+.bottom_nav ul li{
+    width: 168px;
+    height: 67px;
+    text-align: center;
+    display: inline-block;
+}
+.bottom_nav ul{
+    padding-left: 114px;
+}
+.bottom_nav ul li img{
+    margin-top: 4px;
+    margin-left: -15px;
+}
+.bottom_nav ul li:nth-child(6){
+    position: relative;
+    top: -4px;
+}
+.bottom_nav ul li:nth-child(6) img{
+    position: relative;
+    top: 4px;
+}
+.bottom_nav ul li:nth-child(7){
+    position: relative;
+    top: 8px;
+    display: none;
+}
+/*.huiGood_leftNav_sel{transform:scale(1.15); -webkit-transform:scale(1.15); z-index: 999;}*/
+.huiGood_sel {border:4px solid #00E5FF!important; box-shadow:0px 0px 10px #00E5FF; border-radius:10px; transform:scale(1.07); -webkit-transform:scale(1.07); z-index: 1010;position: relative}
+.bottom_nav_sel{  background: url("../img/huigood/huiGood_nav_sel.png") no-repeat 27px 3px;}
+.huiGood_sub_info_sel{
+    border:4px solid #00E5FF!important; box-shadow:0px 0px 10px #00E5FF;
+}
+.huiGood_sub_info_cur i{
+    background: #00E5FF!important;
+}
+.huiGood_sub_info_cur em{
+    color: #00E5FF!important;
+}
+
+
+/*sub_r_slideInfo滚动条*/
