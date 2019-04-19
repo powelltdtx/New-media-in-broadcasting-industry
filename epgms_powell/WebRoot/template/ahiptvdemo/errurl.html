@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="Page-View-Size" content="1280*720">
+	<title>IPTV</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+ 	<style>
+#wrong { position:absolute; left:560px; top:380px;}
+</style>
+	<script type="text/javascript" src="js/key.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/keyPress.js"></script>
+	<script src="js/master.js"></script>
+	<script src="js/back.js"></script>
+	<script type="text/javascript">
+	var pageControl = {};
+	pageControl.ok=function(){
+		window.location= "auth.html";
+	}
+	pageControl.keyBack=function(){
+		window.location= "auth.html";
+	}
+    /*function OnKeyBack() {
+
+    	 window.location.href= "index.jsp";
+    } 
+    if (typeof(iPanel) != 'undefined') {
+		iPanel.firstLinkFocus = 5;  
+		iPanel.focusWidth = "0";
+	}*/
+    
+    </script>
+</head>
+
+<body  style="background:url(img/wrong.png) no-repeat #000; width:1280px; height:720px;">
+<div id="wrong">
+<!-- 
+	<a onclick="OnKeyBack();"><img src="images/sure_btn.png"></a>
+-->
+</div>
+</body>
+</html>
