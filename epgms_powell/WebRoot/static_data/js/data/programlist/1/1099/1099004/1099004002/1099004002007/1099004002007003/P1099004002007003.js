@@ -1,0 +1,1 @@
+ContentListCallback([{"cliackamount":null,"marklist":[],"description":"用音乐手段来丰富语文课堂。","seriesflag":"1","name":"韵律语文","fileurl":"http://117.71.25.104:85/pic/cms/program/00000001000000100000000000253211/1505727655696type1.png","charging":"0","category_id":"1099004002007003","orgairdate":"","code":"00000001000000100000000000253211","primaryid":"2189913"}])
