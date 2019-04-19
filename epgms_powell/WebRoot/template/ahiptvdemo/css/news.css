@@ -1,0 +1,36 @@
+.newsTitle { position:absolute; left:82px; top:34px;border:4px solid transparent;font-size: 40px;}
+.columnTitle { position:absolute; left:873px; top:40px;border:4px solid transparent;font-size: 32px;}
+.subject{  position: absolute;left:878px; top:40px;font-size: 34px;border:4px solid transparent;}
+.more{  position: absolute;left:1105px; top:40px;font-size: 34px;border:4px solid transparent; width: 100px; background: url("../img/more.png") no-repeat 73px;background-size: 25px}
+#classic { position:absolute; left:80px; top:80px;}
+#classic .classic , #classic .classic2 { width:171px; height:63px; background:url(../img/news/newClassic.png) no-repeat; font-size:30px; text-align:center; line-height:63px; margin-bottom:-6px; border:4px solid transparent;margin-bottom: 3px;}
+.vedioBox { position:absolute; left:259px; top:82px; border:4px solid transparent}
+.news_1 { position:absolute; left:873px; top:82px;}
+.news_2 { position:absolute; left:873px; top:277px;}
+.news_3 { position:absolute; left:873px; top:471px;}
+.newsImg {border:4px solid transparent}
+#textList {  position:absolute; left:263px; top:445px; width:603px; height:220px; background:url(../img/news/newsListBg.jpg) no-repeat; }
+
+#textList::-webkit-scrollbar-track{ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #364E61;}
+/*#textList::-webkit-scrollbar {width: 6px;background-color: #F5F5F5;}*/
+/*#textList::-webkit-scrollbar-thumb { background-color: #8EE2FE;  }*/
+
+
+#textList .textList { height:36px; line-height:36px; padding-left:10px; font-size:22px;border:4px solid transparent;overflow:hidden;text-overflow:clip;white-space:nowrap;}
+#textList .textList:nth-child(2){line-height: 36px;}
+#textList .textList:nth-child(3){line-height: 36px;}
+#textList .textList:nth-child(4){line-height: 33px;}
+#textList .textList:nth-child(5){line-height: 36px; height: 36px;}
+.news_scroll{position: absolute; left: 862px; top: 446px;}
+.news_slide{position: absolute; left: 860px; top: 446px;}
+#classic .sel , .sel{border:4px solid #00E5FF; box-shadow:0px 0px 10px #00E5FF; border-radius:8px; z-index:9;
+    color: #00E5FF;}
+#textList .sel {border:4px solid #00E5FF; box-shadow:0px 0px 10px #00E5FF; border-radius:8px; z-index:9;
+    color: #fff;}
+    
+.blur {
+    color: #00E5FF!important;
+}
+
+
+
