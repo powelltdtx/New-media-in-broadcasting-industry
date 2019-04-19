@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>认证</title>
+	<meta name="Page-View-Size" content="1280*720">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<script src="js/common.js"></script>
+	<script>
+		window.onload=function(){
+			var temptoken = getCookieByunescape("temptoken");
+			if(temptoken && temptoken != ''){
+				window.location="index.html";
+				return;
+			}
+			var userId = '';
+			var IP = '';
+			var MAC = '';
+			var epgdomain = '';
+/* 			if ('CTCSetConfig' in Authentication) {
+			  	userId = Authentication.CTCGetConfig("UserID");//USERID
+				MAC = Authentication.CUGetConfig("mac");//MAC
+				epgdomain = Authentication.CTCGetConfig("EPGDomain" );
+			 } else {
+			 } */
+			var tourl = "" + location;
+			userId = 'aghw04';
+			tourl = tourl.substring(0, tourl.indexOf("auth.html"));
+			tourl = tourl + "/datajsp/getauth.jsp?userId=" + userId + "&mac=" + MAC + "&epgdomain=" + epgdomain;
+			window.location=tourl;
+		}
+	</script>
+</head>
+<body style="width:1280px; height:720px;"> 
+</body>
+</html>
