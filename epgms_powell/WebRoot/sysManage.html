@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>服务器管理</title>
+		<link rel="stylesheet" href="resource/newpages/css/bootstrap.min.css">
+		<link rel="stylesheet" href="resource/newpages/css/font-awesome.min.css">
+		<link rel="stylesheet" href="resource/newpages/layDate/laydate/theme/default/laydate.css">
+		<link rel="stylesheet" href="resource/newpages/css/common.css">
+		<link rel="stylesheet" href="resource/newpages/css/cpsp.css">
+		<link rel="stylesheet" type="text/css" href="resource/newpages/css/layer.css"/>			    
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<!--头部-->
+			<!--主内容部分-->
+			<main>
+				<!--左侧导航-->
+				<nav class="left_nav navbar-left bg-info" style="height: 720px;">
+					<content class="content">
+						<div class="con">
+							<a class="con_sub headerCur" href="javascript:void(0);" id="operMan" onclick="toGo('operationLog_search.do', 'operMan')"><i></i>操作日志</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);" id="useManger" onclick="toGo('user_search.do', 'useManger')"><i></i>用户管理</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);" id="roleManger" onclick="toGo('role_searchAllRoles.do', 'roleManger')"><i></i>角色管理</a>
+						</div>
+						<div class="con">
+							<a class="con_sub" href="javascript:void(0);" id="SerManage" onclick="toGo('serversManage_search.do', 'SerManage')"><i></i>服务器管理</a>
+						</div>
+					</content>
+				</nav>
+				<iframe style="width:84%;height:630px;" name="right" id="rightframe" src="operationLog_search.do" frameborder="0" scrolling="no"></iframe>
+			</main>
+		</div>
+		<script src="resource/newpages/js/jquery-3.2.1.min.js"></script>
+		<script src="resource/newpages/js/bootstrap.min.js"></script>
+		<script src="resource/newpages/js/mangerUse.js"></script>
+		<script src="resource/newpages/js/layer.min.js"></script>
+		<script src="resource/newpages/js/common.js"></script>
+		
+	</body>
+
+</html>
+<script>
+	function toGo(url, id){
+		$('.headerCur').removeClass('headerCur');
+		$('#' + id).addClass('headerCur');
+		document.getElementById('rightframe').src="";
+		document.getElementById('rightframe').src=url;
+	}
+</script>
