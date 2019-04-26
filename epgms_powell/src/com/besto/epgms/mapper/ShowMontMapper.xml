@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.ShowMontMapper">
+
+	<select id="searchMonitorCountByServer" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="Integer">
+		SELECT
+		count(*)
+		FROM
+		epgms_heartbeat
+		<where>
+			1=1
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  checkTime >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  checkTime <= '${endtime}' ]]>
+			</if>
+		</where>
+	</select>
+	<select id="searchMonitorCountByTemplate" parameterType="com.besto.epgms.vo.HeartBeatVO"
+		resultType="Integer">
+		SELECT
+		count(*)
+		FROM
+		epgms_guard_notice
+		<where>
+			1=1
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  tamperTime >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  tamperTime <= '${endtime}' ]]>
+			</if>
+		</where>
+	</select>
+	<select id="searchTotalCountByServer" resultType="Integer">
+		SELECT
+		count(*)
+		FROM
+		epgms_heartbeat
+	</select>
+
+	<select id="searchTotalCountByTemplate" resultType="Integer">
+		SELECT
+		count(*)
+		FROM
+		epgms_guard_notice
+	</select>
+
+	<resultMap id="searchGroupCountByServerMap" type="HashMap">
+		<result property="platForm" column="count" />
+	</resultMap>
+	
+	
+	<select id="searchGroupTotalCount" resultType="com.besto.epgms.vo.TempletVO">
+		SELECT 
+		servergroup groupName,IFNULL(serverCount,0)+IFNULL(templateCount,0) totalCount
+		FROM 
+		(SELECT platForm,COUNT(*) serverCount FROM epgms_guard_notice GROUP BY platForm )a
+		RIGHT JOIN 
+		(SELECT servergroup,COUNT(*) templateCount FROM epgms_heartbeat GROUP BY servergroup) b
+		ON a.`platForm`=b.servergroup
+	</select>
+	
+	<!-- 条形图:查询15天内模板异常信息总和 -->
+	<select id="searchTemplateCountByBar" resultType="java.util.HashMap">
+		SELECT a.click_date days,IFNULL(b.countNum,0) AS countNum
+		FROM (
+		    SELECT CURDATE() AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 1 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 2 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 3 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 4 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 5 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 6 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 7 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 8 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 9 DAY) AS click_date   
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 10 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 11 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 12 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 13 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 14 DAY) AS click_date
+		    
+		) a LEFT JOIN (
+		SELECT DATE_FORMAT(tamperTime,'%Y-%m-%d') days,COUNT(1) countNum FROM epgms_guard_notice
+		GROUP BY days  ORDER BY days DESC
+		) b ON a.click_date = b.days;
+	</select>
+	<!-- 条形图:查询15天内服务器异常信息总和 -->
+	<select id="searchServerCountByBar" resultType="java.util.HashMap">
+		
+		SELECT a.click_date days,IFNULL(b.countNum,0) AS countNum
+		FROM (
+		    SELECT CURDATE() AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 1 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 2 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 3 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 4 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 5 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 6 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 7 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 8 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 9 DAY) AS click_date   
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 10 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 11 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 12 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 13 DAY) AS click_date
+		    UNION ALL
+		    SELECT DATE_SUB(CURDATE(), INTERVAL 14 DAY) AS click_date
+		    
+		) a LEFT JOIN (
+		SELECT DATE_FORMAT(checktime,'%Y-%m-%d') days,COUNT(1) countNum FROM epgms_heartbeat
+		GROUP BY days  ORDER BY days DESC
+		) b ON a.click_date = b.days;
+	</select>
+	
+	<select id="searchLightForTemplate" resultType="com.besto.epgms.vo.GuardVO">
+	SELECT * FROM epgms_guard_notice WHERE handleResult = '未处理'
+	</select>
+	
+	<!-- 查询10秒内插入模板异常信息表的数据 -->
+	<select id="searchLightForTemplate30Second" resultType="com.besto.epgms.vo.GuardVO">
+	SELECT * FROM epgms_guard_notice WHERE tamperTime > (SELECT DATE_SUB(NOW(), INTERVAL 10 SECOND))
+	</select>
+	
+	<select id="searchLightForServer" resultType="com.besto.epgms.vo.HeartBeatVO">
+	SELECT * FROM epgms_heartbeat WHERE handleResult = '未处理'
+	</select>
+	
+	<!-- 查询模版文件异常信息表所有字段 -->
+	<select id="searchAllForTemplate" resultType="com.besto.epgms.vo.GuardAllInfoVO">
+	SELECT * FROM epgms_guard_notice order by tampertime desc limit 0,3
+	</select>
+
+
+</mapper> 
