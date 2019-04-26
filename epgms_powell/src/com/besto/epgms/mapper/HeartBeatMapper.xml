@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.besto.epgms.mapper.HeartBeatMapper">
+	<select id="searchPage" parameterType="com.besto.epgms.vo.HeartBeatVO"
+		resultType="com.besto.epgms.vo.HeartBeatVO">
+		SELECT
+		id,ip,serverName,serverGroup,status,type,checkTime,handleResult
+		FROM
+		epgms_heartbeat
+		<where>
+			1=1
+			<if test="id!=null and id!='' ">
+				and id like '%${id}%'
+			</if>
+			<if test="serverName!=null and serverName!='' ">
+				and serverName like '%${serverName}%'
+			</if>
+			<if test="serverGroup!=null and serverGroup!='' ">
+				and serverGroup like '%${serverGroup}%'
+			</if>
+			<if test="ip!=null and ip!='' ">
+				and ip = '${ip}'
+			</if>
+			<if test="status!=null and status!='' ">
+				and status = '${status}'
+			</if>
+			<if test="type!=null and type!='' ">
+				and type = '${type}'
+			</if>
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  checkTime >= '${checkTime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  checkTime <= '${checkTime}' ]]>
+			</if>
+			<if test="handleResult!=null and handleResult!='' ">
+				and handleResult = '${handleResult}'
+			</if>
+		</where>
+		ORDER BY checkTime
+		DESC
+	</select>
+	
+	<insert id="add" parameterType="com.besto.epgms.vo.HeartBeatVO" useGeneratedKeys="true" keyProperty="id">
+	
+		INSERT INTO  epgms_heartbeat 
+   		(ip,servername,servergroup,status,type,checktime,handleresult,checkcode) 
+   		values
+   		(#{ip},#{serverName},#{serverGroup},#{status},#{type},#{checkTime},#{handleResult},#{checkCode})
+	</insert>
+	
+	<select id="selectByCheckCode" parameterType="com.besto.epgms.vo.HeartBeatVO" resultType="com.besto.epgms.vo.HeartBeatVO">
+		SELECT
+		id,ip,serverName,serverGroup,status,type,checkTime,handleResult,checkCode
+		FROM
+		epgms_heartbeat
+		<where>
+			1=1
+			<if test="checkCode!=null and checkCode!='' ">
+				and checkCode = '${checkCode}'
+			</if>
+			<if test="ip!=null and ip!='' ">
+				and ip = '${ip}'
+			</if>
+		</where>
+	</select>
+	
+	<update id="changeHandleResult" parameterType="com.besto.epgms.vo.HeartBeatVO">
+		UPDATE 
+		epgms_heartbeat
+		SET
+		handleresult = "已处理"	
+	</update>
+	
+	
+	<update id="updateServerStatus" parameterType="com.besto.epgms.vo.HeartBeatVO">
+		UPDATE 
+		epgms_heartbeat
+		SET
+		handleresult = "已处理"
+		WHERE
+		id=#{id}
+	</update>
+	
+
+</mapper> 
