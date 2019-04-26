@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.ServersGroupMapper">
+	
+	<!-- 分页查询 --> 
+    <select id="search" resultType="com.besto.epgms.vo.ServersGroupVO" >
+		SELECT 
+		  id,
+		  NAME,
+		  STATUS,
+		  description,
+		  createtime,
+		  updatetime
+		FROM
+		  sdms_groupinfo
+    </select>    
+</mapper>
