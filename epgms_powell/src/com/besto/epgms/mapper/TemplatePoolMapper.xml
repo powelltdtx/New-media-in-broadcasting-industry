@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.TemplatePoolMapper">
+	<!-- 添加模板到模板库表 -->
+	<insert id="savePool" parameterType="com.besto.epgms.vo.PoolVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		INSERT INTO  epgms_pool 
+   		(templateid,upstreamgroup_id,epgfileid,action,sourceurl,destpath,md5,
+   		 ftpurl,type,upstream_id,createdate,createperson,filename,
+   		 fileid,name,source,api,topicurl,istopic) 
+   		values
+   		(#{templateId},#{upstreamgroup_id},#{epgfileid},#{action},#{sourceurl},#{destpath},#{md5},
+   		#{ftpurl},#{type},#{upstream_id},#{createdate},#{createperson},#{filename},#{fileid},#{name},#{source},#{api},#{topicUrl},#{isTopic})
+	</insert>
+	<!-- 添加图片到缩略图表 -->
+	<insert id="savePic" parameterType="com.besto.epgms.vo.PicVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		INSERT INTO  epgms_pic
+   		(id,name,path) 
+   		values
+   		(#{id},#{picName},#{path})
+	</insert>
+	<!-- 添加模板库中的模板id 和 缩略图id到 epgms_pool_pic表  -->
+	<insert id="saveEpgms_Pool_Pic" parameterType="com.besto.epgms.vo.PoolPicVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		INSERT INTO  epgms_pool_pic
+   		(id,poolid,picid) 
+   		values
+   		(#{id},#{poolId},#{picId})
+	</insert>
+	<!-- 模板库分页信息查询信息 -->
+	<select id="searchPage" parameterType="com.besto.epgms.vo.PoolVO"
+		resultType="com.besto.epgms.vo.PoolVO">
+		SELECT 
+		A.id, 
+		A.createdate,
+		A.name, 
+		A.type, 
+		A.source,
+		A.filename,
+		A.istopic AS isTopic,
+		A.topicurl AS topicUrl,
+		A.topicstatus AS topicStatus,
+		A.templateid AS templateId,
+		C.name AS picName,
+		C.path AS picPath
+		FROM
+		epgms_pool A
+		LEFT JOIN
+		epgms_pool_pic B
+		ON 
+		A.`id` = B.`poolid`
+		LEFT JOIN 
+		epgms_pic C
+		ON
+		B.`picid` = C.`id`
+		<where>
+			1=1
+			<if test="name!=null and name!='' ">
+				and A.name like '%${name}%'
+			</if>
+			<if test="type!=null and type!='' ">
+				and A.type = '${type}'
+			</if>
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  A.createdate >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  A.createdate <= '${endtime}' ]]>
+			</if>
+		</where>
+		order by A.createdate desc
+	</select>
+	
+	<!-- 根据poolId查询模板库中的模板信息 -->
+	<select id="searchPoolById" parameterType="com.besto.epgms.vo.PoolVO"
+		resultType="com.besto.epgms.vo.PoolVO">
+		select
+		a.id ,
+		a.upstreamgroup_id ,
+		a.epgfileid,
+		a.action,
+		a.sourceurl,
+		a.destpath,
+		a.md5,
+		a.ftpurl,
+		a.type,
+		a.upstream_id,
+		a.createdate,
+		a.createperson,
+		a.filename,
+		a.fileid,
+		a.name,
+		a.source,
+		a.templateid,
+		a.istopic,
+		a.api
+		from epgms_pool a
+		<where>
+			<if test="id!=null and id!='' ">
+				and a.id = '${id}'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据poolId查询picVO -->
+	<select id="searchPicByPoolId" parameterType="com.besto.epgms.vo.PoolVO"
+		resultType="com.besto.epgms.vo.PicVO">
+		SELECT
+		A.`id`,
+		A.`name` as picName,
+		A.`path`
+		FROM 
+		epgms_pic A
+		LEFT JOIN
+		epgms_pool_pic B
+		ON
+		A.`id` = B.`picid`
+		<where>
+			<if test="id!=null and id!='' ">
+				and b.`poolid` = #{id}
+			</if>
+		</where>
+	</select>
+	<!-- 根据id更新epgms_pool表信息 -->
+	<update id="updatePoolById" parameterType="com.besto.epgms.vo.PoolVO">
+		UPDATE epgms_pool
+		<set>
+			<if test="templateId != null and templateId != ''">
+				templateid = #{templateId}
+			</if>
+			<if test="upstreamgroup_id != null and upstreamgroup_id != ''">
+				upstreamgroup_id = #{upstreamgroup_id}
+			</if>
+			<if test="epgfileid != null and epgfileid != ''">
+				epgfileid = #{epgfileid}
+			</if>
+			<if test="action != null and action != ''">
+				action = #{action}
+			</if>
+			<if test="sourceurl != null and sourceurl != ''">
+				sourceurl = #{sourceurl}
+			</if>
+			<if test="destpath != null and destpath != ''">
+				destpath = #{destpath}
+			</if>
+			<if test="md5 != null and md5 != ''">
+				md5 = #{md5}
+			</if>
+			<if test="ftpurl != null and ftpurl != ''">
+				ftpurl = #{ftpurl}
+			</if>
+			<if test="type != null and type != ''">
+				type = #{type}
+			</if>
+			<if test="upstream_id != null and upstream_id != ''">
+				upstream_id = #{upstream_id}
+			</if>
+			<if test="createdate != null and createdate != ''">
+				createdate = #{createdate}
+			</if>
+			<if test="createperson != null and createperson != ''">
+				createperson = #{createperson}
+			</if>
+			<if test="filename != null and filename != ''">
+				filename = #{filename}
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name}
+			</if>
+			<if test="source != null and source != ''">
+				source = #{source}
+			</if>
+			<if test="api != null and api != ''">
+				api = #{api}
+			</if>
+			<if test="topicUrl != null and topicUrl != ''">
+				topicurl = #{topicUrl}
+			</if>
+			<if test="isTopic != null and isTopic != ''">
+				istopic = #{isTopic}
+			</if>
+			<if test="topicStatus != null and topicStatus != ''">
+				topicstatus = #{topicStatus}
+			</if>
+		</set>
+		<where>
+			<if test="id != null and id != ''">
+				id = #{id}
+			</if>
+			
+		</where>
+	</update>
+	  
+</mapper>
