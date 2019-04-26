@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.OperationLogMapper">
+   	<!-- 插入日志 -->	
+	<insert id="insertLog" parameterType="com.besto.epgms.po.OperationLog">
+		INSERT INTO epgms_log (username,userid,optid,ip,date,time,level,params)
+		values (#{username},#{userid},
+		(SELECT id FROM epgms_operate A WHERE A.moduleName = #{moduleName} AND A.optname = #{optidName})
+			,#{ip},#{date},#{time},
+		(SELECT level FROM epgms_operate A WHERE A.moduleName = #{moduleName} AND A.optname = #{optidName}),#{params})
+	</insert>
+	
+	<!-- 分页查询 --> 
+    <select id="searchPage"  resultType="com.besto.epgms.po.OperationLog"   parameterType="com.besto.epgms.po.OperationLog" >
+        	<!-- 管理员ID   操作类型        日期        时间       执行的操作  -->
+		SELECT A.username,B.modulename,B.moduledesc,STR_TO_DATE(A.date,'%Y%m%d') date,A.time, B.optdesc FROM epgms_log A, epgms_operate B 
+			WHERE  A.optid = B.id
+		<if test="startDate !=null  and startDate != '' ">			
+				<![CDATA[ AND A.DATE >= DATE_FORMAT('${startDate}','%Y%m%d') ]]> 
+        </if>  
+        <if test=" toDate != null and toDate!=''">			
+				<![CDATA[ AND A.DATE <=  DATE_FORMAT('${toDate}','%Y%m%d') ]]> 
+        </if>  
+        <if test="username!=null and username!=''"> 
+        		AND A.username  like '%${username}%'
+        </if> 
+        <if test="moduleName!=null and moduleName!=''"> 
+        		AND B.modulename = #{moduleName}
+        </if>
+			ORDER BY concat(date,time) desc  	
+    </select>
+	
+	
+	<!-- 查询操作id -->
+	<select id="selectMethodName" resultType="java.lang.Integer"  parameterType="java.lang.String">
+		SELECT A.id FROM  epgms_operate A 
+			WHERE  A.modulename = #{moduleName} AND A.optname = #{optName}
+	</select>
+	<!-- 查询所有模块种类 -->
+	<select id="selectModules" resultType="com.besto.epgms.po.OperationLog" >
+		SELECT DISTINCT modulename, moduledesc FROM epgms_operate
+	</select>
+	 <!-- 查询需要导出的日志 -->
+	<select id="searchLogsForExport" resultType="com.besto.epgms.po.OperationLog"  parameterType="java.lang.String">
+			<!-- 管理员ID   操作类型        日期        时间       执行的操作  -->
+		SELECT A.username,B.modulename,B.moduledesc,STR_TO_DATE(A.date,'%Y%m%d') date,A.time, B.optdesc FROM epgms_log A, epgms_operate B 
+			WHERE  A.optid = B.id
+		<if test="startDate !=null  and startDate != '' ">			
+				<![CDATA[ AND A.DATE >= DATE_FORMAT('${startDate}','%Y%m%d') ]]> 
+        </if>  
+        <if test=" toDate != null and toDate!=''">			
+				<![CDATA[ AND A.DATE <=  DATE_FORMAT('${toDate}','%Y%m%d') ]]> 
+        </if>  
+        <if test="username!=null and username!=''"> 
+        		AND A.username  like '%${username}%'
+        </if> 
+        <if test="moduleName!=null and moduleName!=''"> 
+        		AND B.modulename = #{moduleName}
+        </if>
+			ORDER BY concat(date,time) desc  	
+	</select>
+</mapper>
