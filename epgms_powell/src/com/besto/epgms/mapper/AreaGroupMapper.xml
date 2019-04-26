@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.AreaGroupMapper">
+
+	<!-- 添加分组 -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.besto.epgms.vo.AreaGroupVO">
+
+		INSERT INTO
+		epgms_area_group
+		(area_id,group_id)
+		VALUES
+		(#{areaId},#{groupId})
+	</insert>
+
+	<select id="searchGroupByAreaIds" resultType="com.besto.epgms.vo.GroupVO"
+		parameterType="com.besto.epgms.vo.AreaVO">
+		SELECT
+		id,NAME,STATUS,url,mark,usersgroup,userscount
+		FROM
+		epgms_group
+		WHERE id IN
+		(SELECT group_id FROM epgms_area_group
+		<where>
+			area_id in
+			<foreach collection="areaIds" item="id" open="(" separator=","
+				close=")">
+				'${id}'
+			</foreach>
+		</where>
+		)
+	</select>
+
+
+</mapper> 
