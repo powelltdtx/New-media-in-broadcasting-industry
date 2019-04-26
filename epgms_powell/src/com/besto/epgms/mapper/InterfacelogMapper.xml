@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.InterfacelogMapper">   
+
+
+    <!-- 插入用户信息 -->
+    <insert id="add"   parameterType="com.besto.epgms.vo.InterfacelogVO" useGeneratedKeys="true" keyProperty="id"> 
+   		
+   		INSERT INTO  epgms_interfacelog 
+   		(sendperson,reqperson,type,datadate,name,decription
+   		,copid,sopid,correlateid,cmdresult,errordescription
+   		,cspid,lspid,cmdfileurl,result) 
+   		values
+   		(#{sendperson},#{reqperson},#{type},#{datadate},#{name},#{decription},
+   		#{copid},#{sopid},#{correlateid},#{cmdresult},#{errordescription},
+   		#{cspid},#{lspid},#{cmdfileurl},#{result})
+   		
+    </insert>
+    
+     <update  id="updateReqError"  parameterType="com.besto.epgms.vo.InterfacelogVO"  >
+    	update epgms_interfacelog
+    	<set>
+    		cmdresult =#{cmdresult},
+    		errordescription=#{errordescription}
+    	</set>
+    	<where>
+    	 	id=#{id}
+    	</where>
+    </update>
+    
+    
+    <update  id="updateSendError"  parameterType="com.besto.epgms.vo.InterfacelogVO"  >
+    	update epgms_interfacelog
+    	<set>
+    		result =#{result},
+    		errordescription=#{errordescription}
+    	</set>
+    	<where>
+    		cspid=#{cspid} and lspid=#{lspid} 
+    	</where> 
+    </update>
+    
+</mapper> 
