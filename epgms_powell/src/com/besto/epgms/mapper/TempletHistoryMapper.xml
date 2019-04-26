@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.TempletHistoryMapper">  
+
+    <!-- 分页查询 --> 
+    <select id="searchPage"  resultType="com.besto.epgms.vo.TempletHistoryVO"   parameterType="com.besto.epgms.vo.TempletHistoryVO" >
+        	select 
+				a.id,a.templet_id,a.name,a.onlinetime,a.type,a.issuedstrategy,a.source
+			 from epgms_templethistory a
+        	<where>
+        	 	a.didonline=1 
+			  <if test="templet_id!=null and templet_id!='' ">
+				 and  a.templet_id like '%${templet_id}%'
+			  </if>
+			  <if test="name!=null and name!='' ">
+				 and  a.name like '%${name}%'
+			  </if>
+			  <if test="type!=null and type!='' ">
+				 and  a.type like '%${type}%'
+			  </if>
+			   <if test="onlinestart!=null and onlinestart!='' ">
+				<![CDATA[  and  a.onlinetime >= '${onlinestart}' ]]>
+			  </if>
+			  <if test="onlineend!=null and onlineend!='' ">
+				<![CDATA[  and  a.onlinetime <= '${onlineend}' ]]> 
+			  </if>
+			  <if test="source!=null and source!='' ">
+				 and  a.source like '%${source}%'
+			  </if>
+			  <if test="issuedstrategy!=null and issuedstrategy!='' ">
+				 and  a.issuedstrategy like '%${issuedstrategy}%'
+			  </if>
+			  
+		   </where>
+        	order by id desc
+    </select>
+
+ 
+	 <!-- 根据id查询 --> 
+    <select id="searchById"  resultType="com.besto.epgms.vo.TempletHistoryVO"   parameterType="com.besto.epgms.vo.TempletHistoryVO" >
+        	select 
+				a.id,a.templet_id,a.name,a.level,
+        		a.ftpurl,a.type,a.issuedstrategy,a.source
+			 from epgms_templethistory a
+        	<where>
+				 a.id = #{id}
+		   </where>
+    </select>
+    
+    
+    <!-- 插入sp信息 -->
+    <insert id="save"   parameterType="com.besto.epgms.vo.TempletHistoryVO" useGeneratedKeys="true" keyProperty="id"> 
+    	<![CDATA[
+    		INSERT INTO epgms_templethistory
+    		(
+    		name,onlinetime,onlineperson, templet_id, level, examinetime, examineperson, 
+    		upstreamgroup_id, epgfileid, action, sourceurl, destpath, md5,fileid ,filename, ftpurl, type ,
+    		issuedstrategy , source,
+    		didonline,upstream_id
+    		)
+    		values
+    		(
+    		#{name},#{onlinetime},#{onlineperson}, #{templet_id}, #{level}, #{examinetime}, #{examineperson}, 
+    		#{upstreamgroup_id}, #{epgfileid}, #{action}, #{sourceurl}, #{destpath}, #{md5}, #{fileid}, #{filename},#{ftpurl}, #{type},
+    		#{issuedstrategy}, #{source}, #{didonline}, #{upstream_id}
+    		)
+    	 ]]>
+    </insert>
+    
+    <!-- 修改 (发布时更新) -->
+    <update id="update" parameterType="com.besto.epgms.vo.TempletHistoryVO" >
+    	update epgms_templethistory
+    	<set> 
+    	<if test="didonline!=null and didonline!='' ">
+			didonline = #{didonline},
+		</if>
+    	<if test="level!=null and level!=''">
+			level = #{level},
+		</if>
+		<if test="examinetime!=null and examinetime!=''">
+			examinetime = #{examinetime},
+		</if>
+		<if test="examineperson!=null and examineperson!=''">
+			examineperson = #{examineperson},
+		</if>
+		<if test="onlinetime!=null and onlinetime!=''">
+			onlinetime = #{onlinetime},
+		</if>
+		<if test="onlineperson!=null and onlineperson!=''">
+			onlineperson = #{onlineperson},
+		</if>
+		</set>
+    	where id=#{id}
+    </update>
+</mapper> 
