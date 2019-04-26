@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.GuardMapper">
+
+
+	<!-- 插入用户信息 -->
+	<insert id="add" parameterType="com.besto.epgms.vo.HashVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		<![CDATA[ 
+   		INSERT INTO  epgms_file_hash 
+   		(epggroup,filename,hashvalue,createtime) 
+   		values
+   		(#{epggroup},#{filename},#{hashvalue},#{createtime})
+   		]]>
+	</insert>
+
+	<!-- 插入用户信息 -->
+	<insert id="add_GuardFile" parameterType="Map">
+
+		INSERT INTO epgms_guard
+		(filename,md5,filepath,createtime)
+		values
+		(#{filename},#{md5},#{filepath},#{createtime})
+
+	</insert>
+
+	<insert id="add_GuardForList" parameterType="Map">
+
+		INSERT INTO epgms_guard
+		(filename,md5,filepath,createtime)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.filename},#{item.md5},#{item.filepath},#{item.createtime})
+		</foreach>
+	</insert>
+
+	<delete id="del_GuardFile" parameterType="Map">
+		delete from epgms_guard
+		where filename= #{filename} and filepath=#{filepath}
+	</delete>
+
+	<select id="getFileMd5" parameterType="Map" resultType="String">
+		select
+		md5 from epgms_guard where filename= #{filename} and
+		filepath=#{filepath}
+
+	</select>
+
+	<insert id="tamperNotice" parameterType="Map">
+		INSERT INTO
+		epgms_guard_notice
+		(filePath,platForm,ip,serverName,tamperMode,tamperTime,handleMode,handleResult)
+		values
+		(#{filePath},#{platForm},#{ip},#{serverName},#{tamperMode},#{tamperTime},#{handleMode},#{handleResult})
+
+	</insert>
+	<insert id="tamperNoticeForList" parameterType="java.util.List">
+		INSERT INTO
+		epgms_guard_notice
+		(filePath,platForm,ip,serverName,tamperMode,tamperTime,handleMode,handleResult)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.filePath},#{item.platForm},#{item.ip},#{item.serverName},#{item.tamperMode},#{item.tamperTime},#{item.handleMode},#{item.handleResult})
+		</foreach>
+
+	</insert>
+
+	<delete id="del_tamperNotice" parameterType="Map">
+		delete from
+		epgms_guard_notice 
+		where 
+		filePath=#{filePath} 
+		and platForm=#{platForm}
+		and ip=#{ip}
+		and serverName=#{serverName}
+		and tamperMode=#{tamperMode} 
+		and tamperTime=#{tamperTime}
+		and handleMode=#{handleMode} 
+		and handleResult=#{handleResult}
+		and handleTime=#{handleTime}
+	</delete>
+
+	<select id="searchPage" parameterType="com.besto.epgms.vo.GuardVO"
+		resultType="com.besto.epgms.vo.GuardVO">
+
+		SELECT
+		id,filePath,platForm,ip,serverName,tamperMode,tamperTime,handleMode,handleResult,handleTime
+		FROM
+		epgms_guard_notice
+		<where>
+			1=1
+			<if test="filePath!=null and filePath!='' ">
+				and  filePath like '%${filePath}%'  
+			</if>
+			<if test="platForm!=null and platForm!='' ">
+				and  platForm = '${platForm}'  
+			</if>
+			<if test="ip!=null and ip!='' ">
+				and  ip = '${ip}' 
+			</if>
+			<if test="serverName!=null and serverName!='' ">
+				and  serverName like '%${serverName}%'
+			</if>
+			<if test="tamperMode!=null and tamperMode!='' ">
+				and  tamperMode = '${tamperMode}'
+			</if>
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  tamperTime >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  tamperTime <= '${endtime}' ]]> 
+			</if>
+			<if test="handleMode!=null and handleMode!='' ">
+				and  handleMode = '${handleMode}' 
+			</if>
+			<if test="handleResult!=null and handleResult!='' ">
+				and  handleResult = '${handleResult}' 
+			</if>
+		</where>
+		ORDER BY tamperTime 
+		DESC
+
+	</select>
+
+	<select id="getFilePathCount" parameterType="Map" resultType="Integer">
+		select count(*) from epgms_guard where filename= #{filename} and
+		filepath=#{filepath}
+	</select>
+</mapper> 
