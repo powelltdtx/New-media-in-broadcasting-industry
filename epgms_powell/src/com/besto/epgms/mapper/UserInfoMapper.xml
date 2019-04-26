@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.UserInfoMapper">   
+	 <!-- 根据id查询 --> 
+    <select id="searchById"  resultType="com.besto.epgms.po.UserInfo"   parameterType="java.lang.String" >
+        	select a.*, b.name as userrolename from epgms_userinfo a
+        	left join epgms_role b on a.userrole = b.id
+        	<where>
+        	   1=1
+			  <!-- 动态拼接条件 -->
+			  <if test="id!=null and id!='' ">
+				 and  userid = #{id}
+			  </if>
+		   </where>
+    </select>
+    <!-- 分页查询 --> 
+    <select id="searchPage"  resultType="com.besto.epgms.po.UserInfo"   parameterType="com.besto.epgms.vo.UserInfoVO" >
+        	select a.*, b.name as userrolename 
+			from epgms_userinfo a
+			left join epgms_role b on a.userrole = b.id
+        	order by createtime desc
+    </select>
+    <!-- 插入用户信息 -->
+    <insert id="save"   parameterType="com.besto.epgms.po.UserInfo" > 
+   		<![CDATA[ INSERT INTO  epgms_userinfo 
+   		(userid,username,password,userrole,phone,email,status,
+   		 createperson,createtime,remark) 
+   		values
+   		(#{userid},#{username},#{password},#{userrole},#{phone},#{email},#{status},
+   		 #{createperson},#{createtime},#{remark} )   ]]> 
+    </insert>
+    <insert id="saveUserPermission"   parameterType="com.besto.epgms.po.UserPermissionInfo" > 
+   		<![CDATA[ INSERT INTO  epgms_user_permission
+   		(userid,roleid) 
+   		values
+   		(#{userid},#{roleid})   ]]> 
+    </insert>
+    <!-- 更新 -->
+    <update id="update" parameterType="com.besto.epgms.vo.UserInfoVO">
+		update epgms_userinfo
+		<set>
+				userid = #{userid},
+				username = #{username},
+				password = #{password},
+				userrole = #{userrole},
+				phone = #{phone},
+				email = #{email},
+				status = #{status},
+				remark = #{remark}
+		</set>
+		where userid = #{olduserid}
+	</update>
+	<delete id="deletePermission" parameterType="com.besto.epgms.vo.UserInfoVO">
+		delete from epgms_user_permission where userid = #{olduserid}
+	</delete>
+	<delete id="delete" parameterType="com.besto.epgms.vo.UserInfoVO">
+		delete from epgms_userinfo where userid = #{userid}
+	</delete>
+	<select id="searchAllRoles"  resultType="com.besto.epgms.po.Role">
+        	select * from epgms_role  a
+        	order by a.createtime desc
+    </select>
+    
+    <select id="searchUserRole"  resultType="com.besto.epgms.po.Role" parameterType="java.lang.String">
+        	select * from epgms_role a , epgms_user_permission b
+        	<where>
+        	   a.id = b.roleid
+        	<if test="user_id!=null and user_id!='' ">
+			    and  b.userid = #{user_id}
+			</if> 
+			</where>
+    </select>
+    
+     <select id="checkUserId"  resultType="java.lang.Integer"   parameterType="java.lang.String" >
+        select count(*) from epgms_userinfo
+        <where>
+        	1=1
+        	<if test="user_id!=null and user_id!='' ">
+			    and  userid = #{user_id}
+			</if> 
+		</where>
+    </select>
+    <select id="searchOwnPer"  resultType="com.besto.epgms.po.UserPermissionInfo" parameterType="java.lang.String">
+        	select * from epgms_user_permission  a
+        	<where>
+        	   1=1
+        	<if test="user_id!=null and user_id!='' ">
+			    and  userid = #{user_id}
+			</if> 
+			</where>
+    </select>
+    <!-- 根据userid查询所有按钮 -->
+    <select id="searchButtonByUserId" parameterType="java.lang.String" resultType="com.besto.epgms.vo.PermissionVO">
+           select btncode from epgms_role_permission      	
+				where roleid in 
+				 (select roleid from epgms_user_permission where userid=#{userid})			
+    </select>
+     <select id="searchAction"  resultType="com.besto.epgms.vo.ActionVO"   parameterType="java.lang.String" >
+        	select id,code,name,action,sequence from epgms_action  a
+        	where
+        	  a.id in (${_parameter})
+			  order by sequence
+    </select>
+</mapper> 
