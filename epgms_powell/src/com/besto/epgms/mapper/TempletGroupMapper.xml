@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.TempletGroupMapper">   
+
+
+    <delete id="deleteByTempletId" parameterType="com.besto.epgms.vo.TempletGroupVO">
+		delete from epgms_templet_group where templet_id = #{templet_id}
+	</delete>
+
+	<insert id="save" parameterType="com.besto.epgms.vo.TempletGroupVO" > 
+   		<![CDATA[ INSERT INTO  epgms_templet_group
+   		(templet_id,group_id) 
+   			values
+   		(#{templet_id},#{group_id}) ]]> 
+    </insert>
+</mapper> 
