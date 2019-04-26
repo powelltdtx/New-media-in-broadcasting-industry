@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.AreaServerMapper">
+
+	<!-- 添加分组 -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.besto.epgms.vo.AreaServerVO">
+
+		INSERT INTO
+		epgms_area_server
+		(area_id,server_id)
+		VALUES
+		(#{areaId},#{serverId})
+	</insert>
+
+
+</mapper> 
