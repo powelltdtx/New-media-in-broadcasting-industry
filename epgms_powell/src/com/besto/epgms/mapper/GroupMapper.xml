@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.GroupMapper">
+
+
+
+	<!-- 根据id查询 -->
+	<select id="searchByIds" resultType="com.besto.epgms.vo.GroupVO">
+		select
+		a.id,a.name,a.status,a.mark,a.usersGroup,usersCount
+		from epgms_group a
+		<where>
+			a.id in
+			<foreach collection="array" item="id" open="(" separator=","
+				close=")">
+				#{id}
+			</foreach>
+		</where>
+
+
+	</select>
+
+	<!-- 预览分组查询 -->
+	<select id="searchAllPreviewGroups" resultType="com.besto.epgms.vo.GroupVO">
+		select
+		a.id as id,
+		a.name as name,
+		b.id as downstream_id ,
+		b.name as
+		downstream_name
+		from epgms_group a LEFT JOIN epgms_downstream b ON
+		a.downstream_id = b.id
+		<where>
+			a.status = '2'
+			and a.type = '2'
+			and b.status = '2'
+		</where>
+		ORDER BY downstream_id,id
+	</select>
+
+	<!-- 添加分组 -->
+	<insert id="addGroup" useGeneratedKeys="true" keyProperty="id" parameterType="com.besto.epgms.vo.GroupVO">
+
+		INSERT INTO
+		epgms_group
+		(name,status,description,url,mark,usersgroup,userscount)
+		VALUES
+		(#{name},#{status},#{description},#{url},#{mark},#{usersGroup},#{usersCount})
+	</insert>
+	
+	<delete id="deleteGroupById" parameterType="com.besto.epgms.vo.GroupVO">
+		DELETE FROM 
+		epgms_group
+		WHERE 
+		id=#{id};
+	</delete>
+
+
+</mapper> 
