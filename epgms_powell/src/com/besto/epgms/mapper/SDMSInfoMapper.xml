@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.SDMSInfoMapper">
+    <select id="searchServers"  resultType="com.besto.epgms.po.Server" parameterType="com.besto.epgms.vo.ServerVO" >
+		SELECT id,NAME,ip,PORT,ftpname,ftppassword,groupid,path 
+		FROM sdms_server 
+		WHERE STATUS = '1' 
+		<if test="id != null and id!=''">			
+			AND id = ${id}
+        </if>  
+		ORDER BY id
+    </select>
+    <select id="searchFileinfoByFileCode" resultType="com.besto.epgms.po.FileInfo" parameterType="com.besto.epgms.vo.FileInfoVO" >
+		SELECT id, CODE, NAME, path, STATUS, createtime, issuetime,server_id 
+		FROM sdms_fileinfo 
+		WHERE CODE = #{code}
+    </select>
+
+    
+	<update id="updateFileinfoByFileCode" parameterType="com.besto.epgms.vo.FileInfoVO">
+		update sdms_fileinfo
+		<set>
+			STATUS = #{status},
+			<if test="contentpath!=null and contentpath!=''">
+				contentpath = '${contentpath}',
+			</if>
+			issuetime = now()
+		</set>
+		where code = #{code}
+	</update>  
+    <insert id="insertFileinfo" parameterType="com.besto.epgms.vo.FileInfoVO" > 
+   		<![CDATA[ INSERT INTO  sdms_fileinfo
+   		(CODE, NAME, path, STATUS, createtime,issuetime,server_id, filetype, localpath, contentpath,ftpdatacheckpath,ftpdatapath) 
+   		values
+   		(#{code},#{name},#{path},#{status},now(),now(), #{server_id}, #{filetype}, #{localpath}, #{contentpath}, #{ftpdatacheckpath}, #{ftpdatapath}) ]]> 
+    </insert>
+
+	<update id="deleteFileinfo" parameterType="com.besto.epgms.vo.FileInfoVO">
+		update sdms_fileinfo
+		<set>
+			STATUS = #{status},
+			issuetime = now()
+		</set>
+		where code like '${code}%';
+	</update>
+	<select id="searchNames" resultType="java.lang.String" parameterType="com.besto.epgms.vo.FileInfoVO" >
+		SELECT DISTINCT 
+		  NAME 
+		FROM
+		  sdms_fileinfo 
+		WHERE NAME LIKE '${name}%'
+    </select>
+</mapper> 
