@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.RoleMapper">   
+    <!-- 查询所有角色信息-->
+    <select id="searchPage"  resultType="com.besto.epgms.vo.RoleVO"   parameterType="com.besto.epgms.vo.RoleVO">
+        	select id,name,remark,createperson,createtime from epgms_role order by createtime desc
+    </select>  
+      <!-- 根据角色id查询角色信息-->
+    <select id="searchRoleById"  resultType="com.besto.epgms.vo.RoleVO"  parameterType="java.lang.String">
+        	select id,name,remark,createperson,createtime from epgms_role
+        	<where>
+        	   1=1
+			  <!-- 动态拼接条件 -->
+			  <if test="id!=null and id!='' ">
+				 and  id = #{id}
+			  </if>
+		   </where>
+    </select>
+    <!-- 查询所有菜单--> 
+    <select id="searchAllMenu"  resultType="com.besto.epgms.vo.MenuVO" >
+        	select id,code,name,action,level,parentcode,sequence from epgms_menu order by sequence*1 
+    </select> 
+    <!-- 根据菜单code查询按钮--> 
+    <select id="searchButtonByMenu"  resultType="com.besto.epgms.vo.ButtonVO"  parameterType="java.lang.String">
+        	select id,code,name,action,menucode,sequence,description from epgms_button_action
+        	<where>
+        	   1=1
+			  <!-- 动态拼接条件 -->
+			  <if test="menucode!=null and menucode!='' ">
+				 and  menucode = #{menucode}
+			  </if>
+			  order by sequence*1 
+		   </where>
+    </select>
+     <!-- 更新色名 -->
+    <update id="updateRole"  parameterType="com.besto.epgms.vo.RoleVO">
+    	update epgms_role set name = #{name}, remark=#{remark} where id =#{id}
+    </update>
+     <!-- 删除角色下的所有按钮 -->
+    <delete id="delRolePermission" parameterType="java.lang.String">
+        delete from epgms_role_permission where roleid = #{roleid}
+    </delete>
+     <!-- 根据角色id和菜单code查询角色按钮--> 
+    <select id="searchButtonByRoleIdAndMenuCode"  resultType="com.besto.epgms.vo.ButtonVO"  parameterType="java.lang.String">
+        	select id,code,name,action,menucode,sequence,description from epgms_button_action
+        	where code in 
+        	(select btncode from epgms_role_permission
+        	<where>
+        	   1=1
+			  <!-- 动态拼接条件 -->
+			  <if test="id!=null and id!='' ">
+				 and  roleid = #{id}
+			  </if>
+			  <if test="code!=null and code!='' ">
+				 and  menucode = #{menucode}
+			  </if>
+		   </where>)
+    </select>
+     <!-- 添加角色关系表-->
+    <insert id="insertPermission"  parameterType="ArrayList" >
+        	insert into epgms_role_permission(id,roleid,btncode,menucode)values
+        	 <foreach collection="list" item="obj"  index="index" separator=",">  
+       		(null,
+       		(select id from epgms_role where name = #{obj.roleName})
+       		,#{obj.btncode},#{obj.menucode})  
+    		 </foreach>  
+    </insert> 
+    <!-- 判断策略名 --> 
+    <select id="chackRoleName"  resultType="java.lang.Integer"   parameterType="java.lang.String" >
+        select count(id) from epgms_role
+        <where>
+        	1=1
+        	<if test="name!=null and name!='' ">
+			    and  name ='${name}'
+			</if> 
+		</where>
+    </select> 
+     <!-- 添加角色-->
+    <insert id="insertRole"  parameterType="com.besto.epgms.vo.RoleVO" >
+        	insert into epgms_role(id,name,remark,createperson,createtime)values
+        	(null,#{name},#{remark},#{createperson},#{createtime})
+    </insert>
+      <!-- 删除角色 -->
+     <delete id="delRole" parameterType="java.lang.String">
+        delete from epgms_role where id = #{id}
+    </delete> 
+     <!-- 判断角色是否关联了用户 -->
+    <select id="checkRole" parameterType="java.lang.String" resultType="int">
+        select count(userid) from epgms_user_permission 
+        <where>
+             1=1
+        	 <if test="roleid!=null and roleid!=''">
+           		And roleid = #{roleid}
+             </if>
+        </where>
+    </select>
+</mapper> 
+    
