@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.TemplateAreaMapper">
+
+
+
+	<!-- 分域分页信息查询信息 -->
+	<select id="searchPage" parameterType="com.besto.epgms.vo.AreaVO"
+		resultType="com.besto.epgms.vo.AreaVO">
+		SELECT
+		a.`id` id,a.`name` name,a.`status` status,a.`operator` operator
+		
+<!-- 	,g.`name` groupName,g.`mark` mark -->
+		FROM
+		epgms_area a
+<!-- 		LEFT JOIN
+		epgms_area_group b
+		ON a.`id`=b.`area_id`
+		LEFT JOIN
+		epgms_group g
+		ON b.`group_id`=g.`id` -->
+		<where>
+			1=1
+			<if test="name!=null and name!='' ">
+				and a.name like '%${name}%'
+			</if>
+			<if test="status!=null and status!='' ">
+				and a.status = '${status}'
+			</if>
+			<if test="groupName!=null and groupName!='' ">
+				and g.name like '%${groupName}%'
+			</if>
+		</where>
+		order by a.id desc
+	</select>
+	<!-- 查询所有分页信息 -->
+	<select id="searchAllArea" resultType="com.besto.epgms.vo.AreaVO">
+		SELECT
+		a.`id` id,a.`name` name,a.`status` status,a.`operator` operator
+		FROM
+		epgms_area a
+		<where>
+			1=1
+			<if test="name!=null and name!='' ">
+				and a.name like '%${name}%'
+			</if>
+			<if test="status!=null and status!='' ">
+				and a.status = '${status}'
+			</if>
+			<if test="groupName!=null and groupName!='' ">
+				and g.name like '%${groupName}%'
+			</if>
+		</where>
+		order by a.id desc
+	</select>
+	
+	<!-- 保存分域 -->
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.besto.epgms.vo.AreaVO">
+	
+	INSERT INTO  
+	epgms_area 
+   		(id,name,operator,status) 
+   	VALUES
+   		(#{id},#{name},#{operator},#{status})
+	</insert>
+	
+	<!-- 根据模板id删除模板的分域 -->
+	<delete id="deleteAreaByTempletId" parameterType="com.besto.epgms.vo.TemplateAreaVO">
+	delete from epgms_templet_area where templet_id = #{templateId}
+	</delete>
+	
+	<!-- 保存模板-分域的关联关系 -->
+	<insert id="save" parameterType="com.besto.epgms.vo.TemplateAreaVO" > 
+	<![CDATA[ INSERT INTO  epgms_templet_area
+	(templet_id,area_id) 
+		values
+	(#{templateId},#{areaId}) ]]> 
+	</insert>
+
+</mapper> 
