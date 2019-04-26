@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->	
+<mapper namespace="com.besto.epgms.mapper.FileManageMapper">
+	
+	<!-- 分页查询 --> 
+    <select id="searchPage"  resultType="com.besto.epgms.vo.FileInfoVO"   parameterType="com.besto.epgms.vo.FileInfoVO" >
+        	<!-- 管理员ID   操作类型        日期        时间       执行的操作  -->
+		SELECT A.id, A.code, A.name, A.path, A.status, A.createtime, A.issuetime, A.server_id, A.filetype, A.localpath, A.contentpath,B.name as server_name, B.ip as server_ip,C.id as group_id, C.name as group_name FROM sdms_fileinfo A, sdms_server B, sdms_groupinfo C 
+			WHERE  A.server_id = B.id and B.groupid = C.id
+		<if test="group_name !=null  and group_name != '' ">			
+				AND C.name  like '%${group_name}%'
+        </if>  
+        <if test="server_name !=null  and server_name != '' ">			
+				AND B.name  like '%${server_name}%'
+        </if> 
+        <if test="server_ip !=null  and server_ip != '' ">			
+				AND B.ip  like '%${server_ip}%'
+        </if>  
+        <if test="name !=null  and name != '' ">			
+				AND A.name  like '%${name}%'
+        </if>        
+        <if test="filetype != null and filetype!=''">			
+				AND A.filetype = ${filetype}
+        </if>  
+        <if test="status != null and status!=''">			
+				AND A.status = ${status}
+        </if>  
+		<if test="startDate !=null  and startDate != '' ">			
+				<![CDATA[ AND A.issuetime >= DATE_FORMAT('${startDate}','%Y-%m-%d %H:%i:%s') ]]> 
+        </if>  
+        <if test=" toDate != null and toDate!=''">			
+				<![CDATA[ AND A.issuetime <=  DATE_FORMAT('${toDate}','%Y-%m-%d %H:%i:%s') ]]> 
+        </if>          
+			ORDER BY A.issuetime desc  	
+    </select>
+    
+    <select id="searchByCode"  resultType="com.besto.epgms.vo.FileInfoVO"   parameterType="com.besto.epgms.vo.FileInfoVO" >
+        	<!-- 管理员ID   操作类型        日期        时间       执行的操作  -->
+		SELECT A.id, A.code, A.name, A.path, A.status, A.createtime, A.issuetime, A.server_id, A.filetype, A.localpath, A.contentpath FROM sdms_fileinfo A
+			WHERE  A.code = '${code}';
+    </select>    
+</mapper>
