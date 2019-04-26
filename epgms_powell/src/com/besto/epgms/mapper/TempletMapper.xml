@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.TempletMapper">
+
+
+	<!-- 插入用户信息 -->
+	<insert id="add" parameterType="com.besto.epgms.vo.TempletVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		<![CDATA[ 
+   		INSERT INTO  epgms_templet 
+   		(upstreamgroup_id,epgfileid,action,sourceurl,destpath,md5
+   		,ftpurl,type,upstream_id,createdate,createperson,filename,fileid,name,source,api,topicurl,istopic) 
+   		values
+   		(#{upstreamgroup_id},#{epgfileid},#{action},#{sourceurl},#{destpath},#{md5},
+   		#{ftpurl},#{type},#{upstream_id},#{createdate},#{createperson},#{filename},#{fileid},#{name},#{source},#{api},#{topicUrl},#{isTopic})
+   		]]>
+	</insert>
+
+	<select id="get" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+		select
+		upstreamgroup_id,epgfileid,action,sourceurl,destpath,md5
+		,ftpurl,type,upstream_id,createdate,createperson,filename
+		from epgms_templet
+		<where>
+			id=#{id}
+		</where>
+	</select>
+
+	<insert id="addTempletStatus" parameterType="com.besto.epgms.vo.TempletVO"
+		useGeneratedKeys="true" keyProperty="id"> 
+   		<![CDATA[ 
+   		INSERT INTO  epgms_templetstatus 
+   		(templet_id,status,level,examinetime,examineperson,dstatus
+   		,deletetime,deleteperson,rejectreason) 
+   		values
+   		(#{id},#{status},#{level},#{examinetime},#{examineperson},#{dstatus},
+   		#{deletetime},#{deleteperson},#{rejectreason})
+   		]]>
+	</insert>
+
+	<!-- 查询模板信息 -->
+	<select id="getTempletById" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+		select
+		a.id ,
+		a.upstreamgroup_id ,
+		a.epgfileid,
+		a.action,
+		a.sourceurl,
+		a.destpath,
+		a.md5,
+		a.ftpurl,
+		a.type,
+		a.upstream_id,
+		a.createdate,
+		a.createperson,
+		a.filename,
+		a.fileid,
+		a.name,
+		a.source,
+		a.istopic,
+		a.topicstatus,
+		a.api,
+		b.status,
+		b.level,
+		b.examinetime,
+		b.examineperson,
+		b.dstatus,
+		b.deleteperson,
+		b.rejectreason
+		from epgms_templet a,epgms_templetstatus b
+		<where>
+			a.id = b.templet_id
+			<if test="id!=null and id!='' ">
+				and a.id = '${id}'
+			</if>
+		</where>
+	</select>
+
+	<!-- 模板分页信息查询信息 -->
+	<select id="searchPage" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+		select 
+		a.id, 
+		a.createdate,
+		a.name, 
+		a.type, 
+		a.source,
+		a.filename,
+		b.status ,
+		b.level,
+		a.istopic as isTopic,
+		a.topicurl as topicUrl,
+		a.topicstatus as topicStatus
+		from epgms_templet a
+		left join epgms_templetstatus b
+		on a.id = b.templet_id
+		<where>
+			1=1
+			<if test="name!=null and name!='' ">
+				and a.name like '%${name}%'
+			</if>
+			<if test="type!=null and type!='' ">
+				and a.type = '${type}'
+			</if>
+			<if test="source!=null and source!='' ">
+				and a.source = '${source}'
+			</if>
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  a.createdate >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  a.createdate <= '${endtime}' ]]>
+			</if>
+			<if test="status!=null and status!='' ">
+				and b.status = '${status}'
+			</if>
+			<if test="level!=null and level!='' ">
+				and b.level = '${level}'
+			</if>
+			<if test="isTopic!=null and isTopic!='' ">
+				and a.istopic = '${isTopic}'
+			</if>
+			
+			<!-- 此条件仅用于模板审核页 -->
+			<if test="topicStatus!=null and topicStatus!='' ">
+				or a.topicstatus = '${topicStatus}'
+			</if>
+		</where>
+		order by a.createdate desc
+	</select>
+
+
+	<!-- 模板详细信息查询 -->
+	<select id="searchTempletGroupDownstreamBytempletId"
+		parameterType="com.besto.epgms.vo.TempletVO" resultType="com.besto.epgms.vo.TempletGroupStreamVO">
+		select
+		a.id as templet_id,
+		a.createdate as createdate,
+		a.name as templet_name,
+		a.type as type,
+		a.source as source,
+		a.filename as filename,
+		a.ftpurl as ftpurl,
+		a.topicurl as topicUrl,
+		a.istopic as isTopic,
+		c.groupid as group_id,
+		c.groupname as group_name,
+		c.downid as downStream_id,
+		c.downname as downStream_name
+		from epgms_templet a
+		LEFT JOIN epgms_templet_group b ON a.id = b.templet_id
+		LEFT JOIN (select
+		a.id as groupid,
+		a.name as groupname,
+		b.name as downname ,
+		b.id as downid
+		from epgms_group a LEFT JOIN epgms_downstream b ON a.downstream_id = b.id
+		where a.status = '2' and a.type = '1' and b.status = '2'
+		) c
+		ON c.groupid = b.group_id
+		<where>
+			a.id = '${id}'
+		</where>
+		ORDER BY downStream_id,group_id
+	</select>
+
+
+	<!-- 模板分组状态查询 -->
+	<select id="searchGroupByIds" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+		select
+		d.id ,
+		d.upstreamgroup_id ,
+		d.epgfileid,
+		d.action,
+		d.sourceurl,
+		d.destpath,
+		d.md5,
+		d.ftpurl,
+		d.type,
+		d.upstream_id,
+		d.createdate,
+		d.createperson,
+		d.filename,
+		d.fileid,
+		d.name,
+		d.source,
+		GROUP_CONCAT(DISTINCT CAST(e.id AS char)) as groupIds,
+		c.status,
+		c.level,
+		c.examinetime,
+		c.examineperson,
+		c.dstatus,
+		c.deleteperson,
+		c.rejectreason
+		from epgms_templet d LEFT JOIN epgms_templetstatus c on c.templet_id =
+		d.id
+		LEFT JOIN epgms_templet_group a on a.templet_id = d.id
+		LEFT JOIN (select * from epgms_group b ) e on a.group_id=e.id
+		<!-- select * from epgms_group b where b.type = '1' and b.status = '2' -->
+
+		<where>
+			d.id in
+			<foreach collection="ids" item="id" open="(" separator=","
+				close=")">
+				'${id}'
+			</foreach>
+		</where>
+		group by d.id
+	</select>
+	<select id="searchTemplateById" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+		SELECT
+		id,filename
+		FROM
+		epgms_templet
+		WHERE
+		id=#{id}
+	</select>
+	<!-- 模板表更新 -->
+	<update id="updateTemplet" parameterType="com.besto.epgms.vo.TempletVO">
+		update epgms_templet
+		<set>
+			<if test="type!=null and type!=''">
+				type = '${type}',
+			</if>
+			<if test="filename!=null and filename!=''">
+				filename = '${filename}',
+			</if>
+			<if test="name!=null and name!=''">
+				name = '${name}',
+			</if>
+			<if test="ftpurl!=null and ftpurl!=''">
+				ftpurl = '${ftpurl}',
+			</if>
+			<if test="topicStatus!=null and topicStatus!=''">
+				topicstatus = '${topicStatus}',
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<!-- 模板状态表更新 -->
+	<update id="updateTempletstatus" parameterType="com.besto.epgms.vo.TempletVO">
+		update epgms_templetstatus
+		<set>
+			<if test="status!=null and status!='' ">
+				status = '${status}',
+			</if>
+			<if test="level!=null and level!=''">
+				level = '${level}',
+			</if>
+			<if test="examinetime!=null and examinetime!=''">
+				examinetime = '${examinetime}',
+			</if>
+			<if test="examineperson!=null and examineperson!=''">
+				examineperson = '${examineperson}',
+			</if>
+			<if test="dstatus!=null and dstatus!=''">
+				dstatus = '${dstatus}',
+			</if>
+			<if test="deletetime!=null and deletetime!=''">
+				deletetime = '${deletetime}',
+			</if>
+			<if test="deleteperson!=null and deleteperson!=''">
+				deleteperson = '${deleteperson}',
+			</if>
+			<if test="rejectreason!=null and rejectreason!=''">
+				rejectreason = '${rejectreason}',
+			</if>
+		</set>
+		where templet_id=#{id}
+	</update>
+
+</mapper> 
