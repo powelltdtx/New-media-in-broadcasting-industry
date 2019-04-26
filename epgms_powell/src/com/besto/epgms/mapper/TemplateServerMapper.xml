@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 每一个表的命名空间必须不一样 -->
+<mapper namespace="com.besto.epgms.mapper.TemplateServerMapper">
+
+	<!-- 模板分页信息查询信息 -->
+	<select id="searchPage" parameterType="com.besto.epgms.vo.TempletVO"
+		resultType="com.besto.epgms.vo.TempletVO">
+			SELECT 
+			e.`name` as serverName,
+			a.id, 
+			a.createdate ,
+			a.name, 
+			a.type, 
+			a.source,
+			a.filename,
+			b.status ,
+			b.level,
+			e.ip as serverIp
+			FROM epgms_templet a
+			LEFT JOIN epgms_templetstatus b
+			ON a.id = b.templet_id
+			LEFT JOIN epgms_templet_area c
+			ON a.`id` = c.`templet_id` 
+			LEFT JOIN epgms_area_server d
+			ON c.`area_id` = d.`area_id`
+			LEFT JOIN sdms_server e
+			ON d.`server_id` = e.`id` 
+		<where>
+			1=1
+			<if test="name!=null and name!='' ">
+				and a.name like '%${name}%'
+			</if>
+			<if test="type!=null and type!='' ">
+				and a.type = '${type}'
+			</if>
+			<if test="source!=null and source!='' ">
+				and a.source = '${source}'
+			</if>
+			<if test="begintime!=null and begintime!='' ">
+				<![CDATA[  and  a.createdate >= '${begintime}' ]]>
+			</if>
+			<if test="endtime!=null and endtime!='' ">
+				<![CDATA[  and  a.createdate <= '${endtime}' ]]>
+			</if>
+			<if test="status!=null and status!='' ">
+				and b.status = '${status}'
+			</if>
+			<if test="level!=null and level!='' ">
+				and b.level = '${level}'
+			</if>
+			<if test="serverIp!=null and serverIp!='' ">
+				and e.ip = '${serverIp}'
+			</if>
+			<if test="serverName!=null and serverName!='' ">
+				and e.name like '%${serverName}%'
+			</if>
+		</where>
+		order by a.createdate desc
+	</select>
+
+</mapper> 
